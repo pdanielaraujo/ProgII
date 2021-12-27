@@ -11,4 +11,11 @@ package zlovo;
  */
 public class DonoEmpresa extends Utilizador{
     
+    public DonoEmpresa (){
+        
+    }
+    
+    public DonoEmpresa (String nome, String password, int numCC, int nif, int numTelef, String morada, String localidade) {
+        super(nome, password, numCC, nif, numTelef, morada, localidade);
+    }
 }

@@ -5,14 +5,134 @@
  */
 package zlovo;
 
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  *
  * @author Pedro
  */
-public abstract class Utilizador {
+public abstract class Utilizador implements Serializable{
     private String nome;
-    private Date dtNascimento;
+    private String password;
+    private int numCC;
+    private int nif;
+    private int numTelef;
+    private String morada;
+    private String localidade;
     
+    public Utilizador () {
+        
+    }
+    
+    public Utilizador (String nome, String password, int numCC, int nif, int numTelef, String morada, String localidade) {
+        this.nome = nome;
+        this.password = password;
+        this.numCC = numCC;
+        this.nif = nif;
+        this.numTelef = numTelef;
+        this.morada = morada;
+        this.localidade = localidade;
+    }
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * @return the numCC
+     */
+    public int getNumCC() {
+        return numCC;
+    }
+
+    /**
+     * @param numCC the numCC to set
+     */
+    public void setNumCC(int numCC) {
+        this.numCC = numCC;
+    }
+
+    /**
+     * @return the nif
+     */
+    public int getNif() {
+        return nif;
+    }
+
+    /**
+     * @param nif the nif to set
+     */
+    public void setNif(int nif) {
+        this.nif = nif;
+    }
+
+    /**
+     * @return the numTelef
+     */
+    public int getNumTelef() {
+        return numTelef;
+    }
+
+    /**
+     * @param numTelef the numTelef to set
+     */
+    public void setNumTelef(int numTelef) {
+        this.numTelef = numTelef;
+    }
+
+    /**
+     * @return the morada
+     */
+    public String getMorada() {
+        return morada;
+    }
+
+    /**
+     * @param morada the morada to set
+     */
+    public void setMorada(String morada) {
+        this.morada = morada;
+    }
+
+    /**
+     * @return the localidade
+     */
+    public String getLocalidade() {
+        return localidade;
+    }
+
+    /**
+     * @param localidade the localidade to set
+     */
+    public void setLocalidade(String localidade) {
+        this.localidade = localidade;
+    }
+    
+    public void login () {
+        System.out.println("função login utilizador");
+    }
 }

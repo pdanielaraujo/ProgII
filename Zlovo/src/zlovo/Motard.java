@@ -11,4 +11,12 @@ package zlovo;
  */
 public class Motard extends Utilizador{
     
+    public Motard (){
+        
+    }
+    
+    public Motard (String nome, String password, int numCC, int nif, int numTelef, String morada, String localidade) {
+        super(nome, password, numCC, nif, numTelef, morada, localidade);
+    }
+    
 }

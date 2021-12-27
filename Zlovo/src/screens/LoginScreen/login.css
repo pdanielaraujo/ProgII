@@ -1,0 +1,11 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+}
+
+.loginContainer {
+    -fx-background-color: #728da6;
+    -fx-margin: 50;
+}

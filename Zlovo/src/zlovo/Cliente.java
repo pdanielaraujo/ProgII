@@ -11,4 +11,12 @@ package zlovo;
  */
 public class Cliente extends Utilizador{
     
+    public Cliente (){
+        
+    }
+    
+    public Cliente (String nome, String password, int numCC, int nif, int numTelef, String morada, String localidade) {
+        super(nome, password, numCC, nif, numTelef, morada, localidade);
+    }
+    
 }

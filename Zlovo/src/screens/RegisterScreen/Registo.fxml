@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" minHeight="400.0" minWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screens.RegisterScreen.RegistoController">
+    <stylesheets>
+        <URL value="@registo.css" />
+    </stylesheets>
+   <children>
+      <TextField fx:id="nome_txt" layoutX="175.0" layoutY="40.0" minWidth="250.0" promptText="Nome" />
+      <TextField fx:id="pass_txt" layoutX="175.0" layoutY="81.0" minWidth="250.0" promptText="Palavra-Passe" />
+      <TextField fx:id="numCC_txt" layoutX="175.0" layoutY="121.0" minWidth="250.0" promptText="Número de Cartão de Cidadão" />
+      <TextField fx:id="nif_txt" layoutX="175.0" layoutY="161.0" minWidth="250.0" promptText="Número de Identificação Fiscal" />
+      <TextField fx:id="numTelef_txt" layoutX="175.0" layoutY="204.0" minWidth="250.0" promptText="Número de Telefone" />
+      <TextField fx:id="morada_txt" layoutX="175.0" layoutY="244.0" minWidth="250.0" promptText="Morada" />
+      <TextField fx:id="localidade_txt" layoutX="175.0" layoutY="284.0" minWidth="250.0" promptText="Localidade" />
+      <Button fx:id="register_btn" alignment="CENTER" layoutX="250.0" layoutY="334.0" minWidth="100.0" mnemonicParsing="false" onAction="#criarConta" text="Criar Conta" textAlignment="JUSTIFY" />
+   </children>
+</AnchorPane>
