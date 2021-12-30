@@ -5,9 +5,7 @@
  */
 package screens.LoginScreen;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -17,10 +15,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import zlovo.Admin;
 import zlovo.Cliente;
+import zlovo.DonoEmpresa;
+import zlovo.Motard;
+import zlovo.Singleton;
 import zlovo.Utilizador;
 
 /**
@@ -36,7 +38,7 @@ public class LoginController implements Initializable {
     private TextField nome_txt;
 
     @FXML
-    private TextField pass_txt;
+    private PasswordField pass_txt;
 
     @FXML
     private Button login_btn;
@@ -52,30 +54,80 @@ public class LoginController implements Initializable {
     @FXML
     void entrarConta(ActionEvent event) {
         System.out.println("Entrou");
-        Admin admin = null;
-        //boolean e_subclasse = Utilizador.class.isAssignableFrom(Cliente.class);
-        //System.out.println(e_subclasse);
-        //admin.login();
+        Singleton s = Singleton.instance;
         
         try{
-            FileInputStream fileIn = new FileInputStream("admins.txt");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            admin = (Admin) in.readObject();
-            in.close();
-            fileIn.close();
-        }catch(IOException ex){
-            System.out.println("Erro: " + ex.getMessage());
-        }catch(ClassNotFoundException ex){
-            System.out.println("Contacto class not found. " + ex.getMessage());
+            Utilizador utilizador = s.login(nome_txt.getText(), pass_txt.getText());
+            
+            System.out.println(utilizador.getNome());
+            System.out.println(utilizador);
+            
+            if(utilizador instanceof Admin){
+                System.out.println("É um admin");
+                try{
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/MenuAdmin/MenuAdmin.fxml"));
+                    Parent root = loader.load();
+            
+                    stage.getScene().setRoot(root);
+                    stage.show();
+                } catch (IOException ioe) {
+                    ioe.getMessage();
+                }
+            } else if(utilizador instanceof Cliente) {
+                System.out.println("É um cliente");
+                try{
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/MenuCliente/MenuCliente.fxml"));
+                    Parent root = loader.load();
+            
+                    stage.getScene().setRoot(root);
+                    stage.show();
+                } catch (IOException ioe) {
+                    ioe.getMessage();
+                }
+            } else if(utilizador instanceof DonoEmpresa) {
+                System.out.println("É um dono de empresa");
+                try{
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/MenuDonoEmpresa/MenuDonoEmpresa.fxml"));
+                    Parent root = loader.load();
+            
+                    stage.getScene().setRoot(root);
+                    stage.show();
+                } catch (IOException ioe) {
+                    ioe.getMessage();
+                }
+            } else if(utilizador instanceof Motard) {
+                System.out.println("É um motard");
+                try{
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/MenuMotard/MenuMotard.fxml"));
+                    Parent root = loader.load();
+            
+                    stage.getScene().setRoot(root);
+                    stage.show();
+                } catch (IOException ioe) {
+                    ioe.getMessage();
+                }
+            }
+        } catch(NullPointerException npe) {
+            System.out.println("Erro, utilizador não existe ou credenciais erradas: " + npe.getMessage());
         }
         
-        if(nome_txt.getText().equals(admin.getNome())) {
-            System.out.println("admin existe, login");
-        } else {
-            System.out.println("admin não existe com este nome, cancel");
-        }
         
-        System.out.println(admin.getNome());
+        
+        
+//        Utilizador utilizador = 
+//        utilizador.login(nome_txt.getText(), pass_txt.getText());
+        
+//        try{
+//            FileInputStream fileIn = new FileInputStream("utilizadores.txt");
+//            ObjectInputStream in = new ObjectInputStream(fileIn);
+//            utilizador = (Utilizador) in.readObject();
+//            in.close();
+//            fileIn.close();
+//        }catch(IOException ex){
+//            System.out.println("Erro: " + ex.getMessage());
+//        }catch(ClassNotFoundException ex){
+//            System.out.println("Contacto class not found. " + ex.getMessage());
+//        }
         
     }
     

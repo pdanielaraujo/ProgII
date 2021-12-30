@@ -23,5 +23,8 @@ public class Admin extends Utilizador{
         super(nome, password, numCC, nif, numTelef, morada, localidade);
     }
     
+//    public void guardarDados() {
+//        super.guardarDados();
+//    }
     
 }

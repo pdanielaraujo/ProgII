@@ -5,13 +5,18 @@
  */
 package zlovo;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.HashMap;
 
 /**
  *
  * @author Pedro
  */
 public abstract class Utilizador implements Serializable{
+    private int idUtilizador;
     private String nome;
     private String password;
     private int numCC;
@@ -33,9 +38,23 @@ public abstract class Utilizador implements Serializable{
         this.morada = morada;
         this.localidade = localidade;
     }
+    
+    /**
+     * @return the idUtilizador
+     */
+    public int getIdUtilizador() {
+        return idUtilizador;
+    }
 
     /**
-     * @return the nome
+     * @param idUtilizador the idUtilizador to set
+     */
+    public void setIdUtilizador(int idUtilizador) {
+        this.idUtilizador = idUtilizador;
+    }
+
+    /**
+     * @return the idUtilizador
      */
     public String getNome() {
         return nome;
@@ -130,9 +149,5 @@ public abstract class Utilizador implements Serializable{
      */
     public void setLocalidade(String localidade) {
         this.localidade = localidade;
-    }
-    
-    public void login () {
-        System.out.println("função login utilizador");
     }
 }

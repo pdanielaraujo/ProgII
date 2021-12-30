@@ -1,22 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" minHeight="400.0" minWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screens.RegisterScreen.RegistoController">
-    <stylesheets>
-        <URL value="@registo.css" />
-    </stylesheets>
+
+<AnchorPane prefHeight="694.6666870117188" prefWidth="1294.6666259765625" styleClass="mainFxmlClass" stylesheets="@registo.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screens.RegisterScreen.RegistoController">
    <children>
-      <TextField fx:id="nome_txt" layoutX="175.0" layoutY="40.0" minWidth="250.0" promptText="Nome" />
-      <TextField fx:id="pass_txt" layoutX="175.0" layoutY="81.0" minWidth="250.0" promptText="Palavra-Passe" />
-      <TextField fx:id="numCC_txt" layoutX="175.0" layoutY="121.0" minWidth="250.0" promptText="Número de Cartão de Cidadão" />
-      <TextField fx:id="nif_txt" layoutX="175.0" layoutY="161.0" minWidth="250.0" promptText="Número de Identificação Fiscal" />
-      <TextField fx:id="numTelef_txt" layoutX="175.0" layoutY="204.0" minWidth="250.0" promptText="Número de Telefone" />
-      <TextField fx:id="morada_txt" layoutX="175.0" layoutY="244.0" minWidth="250.0" promptText="Morada" />
-      <TextField fx:id="localidade_txt" layoutX="175.0" layoutY="284.0" minWidth="250.0" promptText="Localidade" />
-      <Button fx:id="register_btn" alignment="CENTER" layoutX="250.0" layoutY="334.0" minWidth="100.0" mnemonicParsing="false" onAction="#criarConta" text="Criar Conta" textAlignment="JUSTIFY" />
+      <AnchorPane id="AnchorPane" layoutX="323.0" layoutY="97.0" prefHeight="500.0" prefWidth="647.3333129882812" styleClass="registerContainer">
+          <stylesheets>
+              <URL value="@registo.css" />
+          </stylesheets>
+         <children>
+            <TextField fx:id="nome_txt" focusTraversable="false" layoutX="62.0" layoutY="99.0" prefHeight="35.0" prefWidth="250.0" promptText="Nome" styleClass="input" stylesheets="@registo.css">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="numCC_txt" focusTraversable="false" layoutX="62.0" layoutY="209.0" prefHeight="35.0" prefWidth="250.0" promptText="Número de Cartão de Cidadão" styleClass="input" stylesheets="@registo.css">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="nif_txt" focusTraversable="false" layoutX="62.0" layoutY="264.0" prefHeight="35.0" prefWidth="250.0" promptText="Número de Identificação Fiscal" styleClass="input" stylesheets="@registo.css">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="numTelef_txt" focusTraversable="false" layoutX="335.0" layoutY="99.0" prefHeight="35.0" prefWidth="250.0" promptText="Número de Telefone" styleClass="input" stylesheets="@registo.css">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="morada_txt" focusTraversable="false" layoutX="335.0" layoutY="154.0" prefHeight="35.0" prefWidth="250.0" promptText="Morada" styleClass="input" stylesheets="@registo.css">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="localidade_txt" focusTraversable="false" layoutX="335.0" layoutY="209.0" prefHeight="35.0" prefWidth="250.0" promptText="Localidade" styleClass="input" stylesheets="@registo.css">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Button fx:id="register_btn" alignment="CENTER" layoutX="249.0" layoutY="359.0" mnemonicParsing="false" onAction="#criarConta" prefHeight="35.0" prefWidth="150.0" styleClass="registerButton" stylesheets="@registo.css" text="Criar Conta" textAlignment="JUSTIFY" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="243.0" layoutY="35.0" text="Crie conta" textFill="#728da6">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="375.0" layoutY="302.0" text="Já tenho conta." textFill="#728da6" />
+            <Label layoutX="458.0" layoutY="302.0" onMouseClicked="#goToLoginScreen" style="-fx-font-weight: bold;" text="INICIAR SESSÃO" textFill="#728da6">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <PasswordField fx:id="pass_txt" focusTraversable="false" layoutX="62.0" layoutY="154.0" prefHeight="35.0" prefWidth="250.0" promptText="Palavra-Passe" styleClass="input" stylesheets="@registo.css">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </PasswordField>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
