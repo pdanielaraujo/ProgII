@@ -9,11 +9,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
+import java.util.Properties;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import static zlovo.Singleton.instance;
 
 /**
  *
@@ -32,37 +34,27 @@ public class Zlovo extends Application{
         // TODO code application logic here
         launch(args);
         
+        
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         
-        Singleton s = Singleton.instance;
-//        s.lerDados();
-        
+        Singleton.lerDados();
         Admin admin = new Admin();
         admin.setIdUtilizador(0);
-        admin.setNome("pedro");
-        admin.setPassword("123");
-        admin.setNumCC(123456789);
-        admin.setNif(987654321);
-        admin.setNumTelef(999888777);
-        admin.setMorada("Rua do Santo, nº43, Alvelos");
-        admin.setLocalidade("Barcelos");
-//        admin.guardarDados();
-        Cliente cliente = new Cliente();
-        cliente.setIdUtilizador(1);
-        cliente.setNome("marco");
-        cliente.setPassword("marco123");
-        cliente.setNumCC(222222222);
-        cliente.setNif(345654123);
-        cliente.setNumTelef(977888666);
-        cliente.setMorada("Rua de Baixo, nº99, Faria");
-        cliente.setLocalidade("Braga");
-//        cliente.guardarDados();
-        s.adicionarUtilizadores(admin);
-        s.adicionarUtilizadores(cliente);
-        s.guardarDados();
+        admin.setNome("pedro admin");
+        admin.setUsername("admin1");
+        admin.setPassword("admin1");
+        admin.setNumCC(000000000);
+        admin.setNif(000000000);
+        admin.setNumTelef(000000000);
+        admin.setMorada("rua admin yyy");
+        admin.setLocalidade("cidade yyy admin");
+        System.out.println("antes: " + Singleton.instance.getUtilizadores());
+        Singleton.instance.getUtilizadores().putIfAbsent(admin.getIdUtilizador(), admin);
+        System.out.println("depois: " + Singleton.instance.getUtilizadores());
+        System.out.println("Utilizadores: " + Singleton.instance.getUtilizadores());
         
         guiStage = primaryStage;
         
@@ -76,15 +68,9 @@ public class Zlovo extends Application{
         primaryStage.show();
         
         
-        System.out.println(primaryStage.getWidth());
-        System.out.println(primaryStage.getHeight());
-        System.out.println(primaryStage.getMaxWidth());
-        System.out.println(primaryStage.getMaxHeight());
+//        System.out.println(primaryStage.getWidth());
+//        System.out.println(primaryStage.getHeight());
+//        System.out.println(primaryStage.getMaxWidth());
+//        System.out.println(primaryStage.getMaxHeight());
     }
-    
-    public static void serializar(Admin admin) {
-        // Serializar um objeto para ficheiro
-        
-    }
-    
 }

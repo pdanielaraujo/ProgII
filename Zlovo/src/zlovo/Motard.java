@@ -15,8 +15,8 @@ public class Motard extends Utilizador{
         
     }
     
-    public Motard (String nome, String password, int numCC, int nif, int numTelef, String morada, String localidade) {
-        super(nome, password, numCC, nif, numTelef, morada, localidade);
+    public Motard (String nome, String username, String password, int numCC, int nif, int numTelef, String morada, String localidade) {
+        super(nome, username, password, numCC, nif, numTelef, morada, localidade);
     }
     
 }

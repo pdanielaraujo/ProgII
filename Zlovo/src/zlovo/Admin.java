@@ -5,10 +5,6 @@
  */
 package zlovo;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-
 /**
  *
  * @author Pedro
@@ -19,12 +15,8 @@ public class Admin extends Utilizador{
         
     }
     
-    public Admin (String nome, String password, int numCC, int nif, int numTelef, String morada, String localidade) {
-        super(nome, password, numCC, nif, numTelef, morada, localidade);
+    public Admin (String nome, String username, String password, int numCC, int nif, int numTelef, String morada, String localidade) {
+        super(nome, username, password, numCC, nif, numTelef, morada, localidade);
     }
-    
-//    public void guardarDados() {
-//        super.guardarDados();
-//    }
     
 }

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  *
@@ -18,6 +19,7 @@ import java.util.HashMap;
 public abstract class Utilizador implements Serializable{
     private int idUtilizador;
     private String nome;
+    private String username;
     private String password;
     private int numCC;
     private int nif;
@@ -29,8 +31,9 @@ public abstract class Utilizador implements Serializable{
         
     }
     
-    public Utilizador (String nome, String password, int numCC, int nif, int numTelef, String morada, String localidade) {
+    public Utilizador (String nome, String username, String password, int numCC, int nif, int numTelef, String morada, String localidade) {
         this.nome = nome;
+        this.username = username;
         this.password = password;
         this.numCC = numCC;
         this.nif = nif;
@@ -54,7 +57,7 @@ public abstract class Utilizador implements Serializable{
     }
 
     /**
-     * @return the idUtilizador
+     * @return the nome
      */
     public String getNome() {
         return nome;
@@ -65,6 +68,20 @@ public abstract class Utilizador implements Serializable{
      */
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**

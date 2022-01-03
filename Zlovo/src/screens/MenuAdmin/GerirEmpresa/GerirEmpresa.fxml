@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="645.0" prefWidth="1094.666625976525" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screens.MenuAdmin.GerirEmpresa.GerirEmpresaController">
+    <stylesheets>
+        <URL value="@gerirempresa.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="585.0" layoutY="298.0" text="empresa" />
+      <TableView fx:id="empresas_table" layoutX="71.0" layoutY="26.0" prefWidth="290.0" AnchorPane.bottomAnchor="215.0" AnchorPane.topAnchor="30.0">
+        <columns>
+          <TableColumn fx:id="col_nome" prefWidth="75.0" text="Nome" />
+          <TableColumn fx:id="col_numTelef" prefWidth="106.666748046875" text="Num. Telefone" />
+            <TableColumn fx:id="col_localidade" prefWidth="106.666748046875" text="Localidade" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

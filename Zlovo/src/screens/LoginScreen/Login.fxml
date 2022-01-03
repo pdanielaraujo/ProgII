@@ -16,7 +16,7 @@
     <children>
       <AnchorPane layoutX="447.0" layoutY="97.0" prefHeight="500.0" prefWidth="400.0" scaleShape="false" styleClass="loginContainer" stylesheets="@login.css">
          <children>
-            <TextField fx:id="nome_txt" focusTraversable="false" layoutX="75.0" layoutY="130.0" prefHeight="35.0" prefWidth="250.0" promptText="Nome" styleClass="input">
+            <TextField fx:id="username_txt" focusTraversable="false" layoutX="75.0" layoutY="130.0" prefHeight="35.0" prefWidth="250.0" promptText="Username" styleClass="input">
                <font>
                   <Font size="16.0" />
                </font></TextField>
