@@ -5,3 +5,13 @@
 .mainFxmlClass {
 
 }
+
+.btn {
+    -fx-background-color: #728da6;
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+}
+
+/*.table-view {
+    -fx-background-color: transparent;
+}*/

@@ -5,3 +5,37 @@
 .mainFxmlClass {
 
 }
+
+.sideBarButton {
+    -fx-background-color: #728da6;
+    -fx-background-radius: 0;
+    /*-fx-border-width: 2;*/
+    /*-fx-border-style: solid hidden solid hidden;*/
+    /*-fx-border-color: white;*/
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+}
+
+.sideBarButton:selected {
+    -fx-background-color: #7fa6c9;
+}
+
+.homeButton {
+    -fx-background-color:  #4d677d;
+    -fx-font-weight: bold;
+    -fx-font-size: 22;
+}
+
+.mainContainer {
+    -fx-background-color: white;
+}
+
+.sairButton {
+    -fx-background-color: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+}
+
+.sideBarContainer {
+    -fx-background-color: #728da6;
+}

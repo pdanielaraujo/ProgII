@@ -5,12 +5,16 @@
  */
 package zlovo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Pedro
  */
 public class DonoEmpresa extends Utilizador{
+    private static final long serialVersionUID = 1474749656502870802L;
     private boolean ativo;
+    private ArrayList<Empresa> empresas = new ArrayList<>();
     
     public DonoEmpresa (){
         
@@ -35,5 +39,23 @@ public class DonoEmpresa extends Utilizador{
         this.ativo = ativo;
     }
     
+    /**
+     * @return the empresas
+     */
+    public ArrayList<Empresa> getEmpresas() {
+        return empresas;
+    }
+
+    /**
+     * @param empresas the empresas to set
+     */
+    public void setEmpresas(ArrayList<Empresa> empresas) {
+        this.empresas = empresas;
+    }
+    
+    @Override
+    public String toString() {
+        return this.getUsername();
+    }
     
 }

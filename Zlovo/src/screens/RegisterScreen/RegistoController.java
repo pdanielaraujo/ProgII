@@ -25,8 +25,6 @@ import javafx.scene.control.RadioButton;
 import zlovo.Cliente;
 import zlovo.DonoEmpresa;
 import zlovo.Singleton;
-import static zlovo.Singleton.instance;
-import zlovo.Utilizador;
 
 /**
  * FXML Controller class
@@ -79,7 +77,8 @@ public class RegistoController implements Initializable {
         cliente_rb.setToggleGroup(radioGroup);
         cliente_rb.setSelected(true);
         donoEmpresa_rb.setToggleGroup(radioGroup);
-    }    
+    }   
+    
     @FXML
     void criarConta(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.NONE);

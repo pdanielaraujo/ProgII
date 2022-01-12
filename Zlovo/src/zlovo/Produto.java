@@ -5,6 +5,8 @@
  */
 package zlovo;
 
+import java.util.HashMap;
+
 /**
  *
  * @author Pedro
@@ -14,13 +16,13 @@ public class Produto {
     private String nome;
     private String categoria;
     private String descricao;
-    private float preco;
+    private HashMap<String, Float> preco = new HashMap<>();
     
     public Produto() {
         
     }
     
-    public Produto(String nome, String categoria, String descricao, float preco) {
+    public Produto(String nome, String categoria, String descricao, HashMap<String, Float> preco) {
         this.nome = nome;
         this.categoria = categoria;
         this.descricao = descricao;
@@ -86,14 +88,14 @@ public class Produto {
     /**
      * @return the preco
      */
-    public float getPreco() {
+    public HashMap<String, Float> getPreco() {
         return preco;
     }
 
     /**
      * @param preco the preco to set
      */
-    public void setPreco(float preco) {
+    public void setPreco(HashMap<String, Float> preco) {
         this.preco = preco;
     }
     

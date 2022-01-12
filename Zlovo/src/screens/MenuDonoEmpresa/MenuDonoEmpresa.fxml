@@ -1,14 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="screens.MenuDonoEmpresa.MenuDonoEmpresaController">
+<AnchorPane prefHeight="695.0" prefWidth="1295.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screens.MenuDonoEmpresa.MenuDonoEmpresaController">
     <stylesheets>
         <URL value="@menudonoempresa.css" />
     </stylesheets>
    <children>
-      <Label layoutX="227.0" layoutY="182.0" text="MENU DONO DE EMPRESA" />
+      <AnchorPane fx:id="rootPane" layoutX="317.0" layoutY="116.0" prefHeight="645.0" prefWidth="1095.0" styleClass="mainContainer" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+        <fx:include id="homeDonoEmpresa" source="/screens/MenuDonoEmpresa/HomeDonoEmpresa.fxml"/>
+      </AnchorPane>
+      <VBox layoutX="30.0" layoutY="155.0" prefHeight="645.0" prefWidth="200.0" styleClass="sideBarContainer" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <ToggleButton fx:id="criarEmpresa_btn" mnemonicParsing="false" onAction="#loadAddEmpresaPage" prefHeight="50.0" prefWidth="200.0" styleClass="sideBarButton" text="Criar Empresa" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ToggleButton>
+            <ToggleButton fx:id="updateEmpresa_btn" mnemonicParsing="false" onAction="#loadUpdateEmpresaPage" prefHeight="50.0" prefWidth="200.0" styleClass="sideBarButton" text="Alterar dados de empresa" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ToggleButton>
+            <ToggleButton fx:id="gerirProduto_btn" mnemonicParsing="false" onAction="#loadGerirProdutoPage" prefHeight="50.0" prefWidth="200.0" styleClass="sideBarButton" text="Produtos da empresa" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ToggleButton>
+            <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="sideBarButton" text="ToggleButton" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ToggleButton>
+         </children>
+      </VBox>
+      <AnchorPane layoutX="208.0" layoutY="-75.0" prefHeight="50.0" prefWidth="1295.0" style="-fx-background-color: #4d677d;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <children>
+            <Label layoutX="547.0" layoutY="11.0" style="-fx-font-weight: bold;" text="MENU DONO EMPRESA" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="887.0" layoutY="15.0" text="Sessão iniciada em: " textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="loggedUserName_label" layoutX="1010.0" layoutY="15.0" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ToggleButton fx:id="goHome_btn" mnemonicParsing="false" onAction="#loadMainDonoEmpresaPage" styleClass="homeButton" text="Zlovo" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font size="22.0" />
+         </font>
+      </ToggleButton>
+      <Button fx:id="terminarSessao_btn" layoutX="1140.0" layoutY="10.0" mnemonicParsing="false" onAction="#terminarSessao" styleClass="sairButton" text="Terminar sessão" textFill="#728da6">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

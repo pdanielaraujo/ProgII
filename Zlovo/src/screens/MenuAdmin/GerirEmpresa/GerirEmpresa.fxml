@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,13 +12,31 @@
         <URL value="@gerirempresa.css" />
     </stylesheets>
    <children>
-      <Label layoutX="585.0" layoutY="298.0" text="empresa" />
-      <TableView fx:id="empresas_table" layoutX="71.0" layoutY="26.0" prefWidth="290.0" AnchorPane.bottomAnchor="215.0" AnchorPane.topAnchor="30.0">
+      <TableView fx:id="empresas_table" layoutX="69.0" layoutY="29.0" prefHeight="400.0" AnchorPane.bottomAnchor="216.0" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="29.0">
         <columns>
           <TableColumn fx:id="col_nome" prefWidth="75.0" text="Nome" />
-          <TableColumn fx:id="col_numTelef" prefWidth="106.666748046875" text="Num. Telefone" />
-            <TableColumn fx:id="col_localidade" prefWidth="106.666748046875" text="Localidade" />
+          <TableColumn fx:id="col_numTelef" prefWidth="90.0" text="Num. Telef" />
+            <TableColumn fx:id="col_localidade" prefWidth="90.0" text="Localidade" />
+            <TableColumn fx:id="col_dono" prefWidth="100.0" text="Dono" />
         </columns>
       </TableView>
+      <Button fx:id="desativarEmpresa_btn" layoutX="70.0" layoutY="450.0" mnemonicParsing="false" onAction="#desativarEmpresa" styleClass="btn" stylesheets="@gerirempresa.css" text="Desativar empresa" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <TableView fx:id="donosEmpresas_table" layoutX="494.0" layoutY="29.0" AnchorPane.rightAnchor="70.0">
+        <columns>
+          <TableColumn fx:id="col_nomeDono" prefWidth="100.0" text="Nome" />
+          <TableColumn fx:id="col_numTelefDono" prefWidth="105.0" text="Num. Telef" />
+            <TableColumn fx:id="col_numCCDono" prefWidth="105.0" text="Num. CC" />
+            <TableColumn fx:id="col_nifDono" prefWidth="105.0" text="NIF" />
+            <TableColumn fx:id="col_localidadeDono" prefWidth="100.0" text="Localidade" />
+            <TableColumn fx:id="col_idDono" editable="false" prefWidth="100.0" sortable="false" text="Nome" visible="false" />
+        </columns>
+      </TableView>
+      <Button fx:id="desativarDonoEmpresa_btn" layoutX="507.0" layoutY="450.0" mnemonicParsing="false" onAction="#desativarDonoEmpresa" styleClass="btn" stylesheets="@gerirempresa.css" text="Desativar dono" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
    </children>
 </AnchorPane>

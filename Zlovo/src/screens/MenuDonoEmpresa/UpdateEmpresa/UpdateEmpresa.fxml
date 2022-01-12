@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="645.0" prefWidth="1095.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screens.MenuDonoEmpresa.UpdateEmpresa.UpdateEmpresaController">
+    <stylesheets>
+        <URL value="@updateempresa.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="empresas_table" layoutX="69.0" layoutY="54.0" prefHeight="400.0">
+        <columns>
+          <TableColumn fx:id="nomeEmpresa_col" prefWidth="75.0" text="Nome" />
+          <TableColumn fx:id="moradaEmpresa_col" prefWidth="180.0" text="Morada" />
+            <TableColumn fx:id="localidadeEmpresa_col" prefWidth="110.0" text="Localidade" />
+            <TableColumn fx:id="numTelefEmpresa_col" prefWidth="110.0" text="Num. Telefone" />
+        </columns>
+      </TableView>
+      <TextField layoutX="585.0" layoutY="99.0" prefHeight="35.0" prefWidth="400.0" promptText="Nome" styleClass="input">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="585.0" layoutY="154.0" prefHeight="35.0" prefWidth="400.0" promptText="Morada" styleClass="input">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="585.0" layoutY="209.0" prefHeight="35.0" prefWidth="400.0" promptText="Localidade" styleClass="input">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="585.0" layoutY="264.0" prefHeight="35.0" prefWidth="400.0" promptText="Número de Telefone" styleClass="input">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Button layoutX="720.0" layoutY="356.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" styleClass="updateButton" text="Atualizar" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

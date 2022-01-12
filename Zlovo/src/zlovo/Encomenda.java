@@ -16,7 +16,16 @@ public class Encomenda {
     private String descricao;
     private int unidadeProduto;
     private float precoTotal;
+    
+    /**
+     * 0 = Por Confirmar
+     * 1 = Confirmada
+     * 2 = Efetuada
+     * 3 = Paga ::::???????????????
+     */
+    private int estado;
     private ArrayList<Produto> produtos = new ArrayList<Produto>();
+    private Empresa empresa;
     
     
     public Encomenda() {

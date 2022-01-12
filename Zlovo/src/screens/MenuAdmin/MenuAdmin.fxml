@@ -1,64 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="694.6666870117188" prefWidth="1294.6666259765625" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screens.MenuAdmin.MenuAdminController">
+<AnchorPane prefHeight="695.0" prefWidth="1295.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screens.MenuAdmin.MenuAdminController">
     <stylesheets>
         <URL value="@menuadmin.css" />
     </stylesheets>
    <children>
-      <AnchorPane fx:id="rootPane" layoutX="200.0" layoutY="50.0" prefHeight="645.0" prefWidth="1095.0" styleClass="mainContainer" stylesheets="@menuadmin.css" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
-      <VBox prefHeight="645.0" prefWidth="200.0" stylesheets="@menuadmin.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
+      <AnchorPane fx:id="rootPane" focusTraversable="true" layoutX="200.0" layoutY="50.0" prefHeight="645.0" prefWidth="1095.0" styleClass="mainContainer" stylesheets="@menuadmin.css" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor></AnchorPane>
+      <VBox prefHeight="645.0" prefWidth="200.0" styleClass="sideBarContainer" stylesheets="@menuadmin.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
          <children>
-            <Button fx:id="goToAddAdminScreen" mnemonicParsing="false" onAction="#loadAddAdminPane" prefHeight="214.5" prefWidth="200.0" styleClass="sideBarButton" text="Adicionar&#10;Administrador" textAlignment="CENTER" textFill="WHITE">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
+            <ToggleButton fx:id="goToAddAdminScreen" mnemonicParsing="false" onAction="#loadAddAdminPane" prefHeight="50.0" prefWidth="200.0" styleClass="sideBarButton" text="Adicionar Utilizador" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font size="14.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-            </Button>
-            <Button fx:id="goToGerirEmpresaScreen" mnemonicParsing="false" onAction="#loadGerirEmpresaPane" prefHeight="214.5" prefWidth="200.0" styleClass="sideBarButton" text="Empresas" textFill="WHITE">
+            </ToggleButton>
+            <ToggleButton fx:id="goToGerirEmpresaScreen" mnemonicParsing="false" onAction="#loadGerirEmpresaPane" prefHeight="50.0" prefWidth="200.0" styleClass="sideBarButton" text="Empresas" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font size="14.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-            </Button>
-            <Button fx:id="goToGerirProdutoScreen" mnemonicParsing="false" onAction="#loadGerirProdutoPane" prefHeight="214.5" prefWidth="200.0" styleClass="sideBarButton" text="Categorias&#10;produto" textAlignment="CENTER" textFill="WHITE">
+            </ToggleButton>
+            <ToggleButton fx:id="goToGerirProdutoScreen" mnemonicParsing="false" onAction="#loadGerirProdutoPane" prefHeight="50.0" prefWidth="200.0" styleClass="sideBarButton" text="Categorias Produto" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font size="14.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-            </Button>
+            </ToggleButton>
          </children>
       </VBox>
-      <AnchorPane prefHeight="50.0" prefWidth="1294.6666259765625" style="-fx-background-color: #4d677d;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="50.0" prefWidth="1295.0" style="-fx-background-color: #4d677d;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="541.0" layoutY="11.0" style="-fx-font-weight: bold;" text="MENU ADMINISTRADOR" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="8.0" style="-fx-font-weight: bold;" text="Zlovo" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Button fx:id="terminarSessao_btn" layoutX="1135.0" layoutY="11.0" mnemonicParsing="false" onAction="#terminarSessao" styleClass="sairButton" text="Terminar sessão" textFill="#728da6">
+            <Button fx:id="terminarSessao_btn" layoutX="1140.0" layoutY="10.0" mnemonicParsing="false" onAction="#terminarSessao" styleClass="sairButton" text="Terminar sessão" textFill="#728da6">
                <font>
                   <Font size="14.0" />
                </font>
@@ -66,6 +61,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <ToggleButton fx:id="goHome_btn" mnemonicParsing="false" onAction="#loadMainAdminPage" styleClass="homeButton" text="Zlovo" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </ToggleButton>
          </children>
       </AnchorPane>
    </children>

@@ -52,9 +52,24 @@ public class Zlovo extends Application{
         admin.setMorada("rua admin yyy");
         admin.setLocalidade("cidade yyy admin");
         System.out.println("antes: " + Singleton.instance.getUtilizadores());
-        Singleton.instance.getUtilizadores().putIfAbsent(admin.getIdUtilizador(), admin);
+        Singleton.instance.getUtilizadores().put(admin.getIdUtilizador(), admin);
         System.out.println("depois: " + Singleton.instance.getUtilizadores());
         System.out.println("Utilizadores: " + Singleton.instance.getUtilizadores());
+        
+        
+//        Empresa empresa = new Empresa();
+//        empresa.setIdEmpresa(0);
+//        empresa.setNome("Zlovo");
+//        empresa.setMorada("Rua da avenida, nº50, Alvelos");
+//        empresa.setLocalidade("Barcelos");
+//        empresa.setNumTelef(911347554);
+//        empresa.setAtivo(true);
+        System.out.println("antes: " + Singleton.instance.getEmpresasLocalidade());
+        System.out.println("empresaaaas: " + Singleton.instance.getEmpresas());
+//        Singleton.instance.adicionarEmpresas(empresa);
+//        Singleton.instance.adicionarEmpresasLocalidade(empresa, empresa.getLocalidade());
+//        System.out.println("depois: " + Singleton.instance.getEmpresasLocalidade().get(empresa.getLocalidade()));
+//        System.out.println("Utilizadores: " + Singleton.instance.getEmpresasLocalidade());
         
         guiStage = primaryStage;
         

@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -19,6 +20,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import screens.MenuDonoEmpresa.AddEmpresa.AddEmpresaController;
+import screens.MenuDonoEmpresa.HomeDonoEmpresaController;
+import screens.MenuDonoEmpresa.MenuDonoEmpresaController;
 import zlovo.Admin;
 import zlovo.Cliente;
 import zlovo.DonoEmpresa;
@@ -52,6 +56,10 @@ public class LoginController implements Initializable {
         // TODO
     }    
     
+    public void enviarDados(Utilizador utilizador) {
+        
+    }
+    
     @FXML
     void entrarConta(ActionEvent event) {
         Singleton s = Singleton.instance;
@@ -73,8 +81,9 @@ public class LoginController implements Initializable {
                     System.out.println("É um admin");
                     try{
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/MenuAdmin/MenuAdmin.fxml"));
+                        
+                        stage.setUserData(utilizador);
                         Parent root = loader.load();
-            
                         stage.getScene().setRoot(root);
                         stage.show();
                     } catch (IOException ioe) {
@@ -84,8 +93,9 @@ public class LoginController implements Initializable {
                     System.out.println("É um cliente");
                     try{
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/MenuCliente/MenuCliente.fxml"));
+                        
+                        stage.setUserData(utilizador);
                         Parent root = loader.load();
-            
                         stage.getScene().setRoot(root);
                         stage.show();
                     } catch (IOException ioe) {
@@ -93,21 +103,32 @@ public class LoginController implements Initializable {
                     }
                 } else if(utilizador instanceof DonoEmpresa) {
                     System.out.println("É um dono de empresa");
-                    try{
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/MenuDonoEmpresa/MenuDonoEmpresa.fxml"));
-                        Parent root = loader.load();
-            
-                        stage.getScene().setRoot(root);
-                        stage.show();
-                    } catch (IOException ioe) {
+                    DonoEmpresa dono = (DonoEmpresa) utilizador;
+                    if(dono.isAtivo()) {
+                        try{
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/MenuDonoEmpresa/MenuDonoEmpresa.fxml"));
+                            
+                            stage.setUserData(dono);
+                            Parent root = loader.load();
+                            stage.getScene().setRoot(root);
+                            stage.show();
+                        } catch (IOException ioe) {
                         ioe.getMessage();
+                        }
+                    } else {
+                        alert.setAlertType(Alert.AlertType.ERROR);
+                        alert.setTitle("Erro: Conta desativada");
+                        alert.setHeaderText("A sua conta encontra-se desativada, portanto não pode entrar.");
+                        alert.show();
                     }
+                    
                 } else if(utilizador instanceof Motard) {
                     System.out.println("É um motard");
                     try{
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/MenuMotard/MenuMotard.fxml"));
+                        
+                        stage.setUserData(utilizador);
                         Parent root = loader.load();
-            
                         stage.getScene().setRoot(root);
                         stage.show();
                     } catch (IOException ioe) {

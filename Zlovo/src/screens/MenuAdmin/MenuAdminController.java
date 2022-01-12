@@ -8,6 +8,8 @@ package screens.MenuAdmin;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 
@@ -15,6 +17,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -28,13 +32,16 @@ public class MenuAdminController implements Initializable {
     Stage stage = zlovo.Zlovo.guiStage;
 
     @FXML
-    private Button goToAddAdminScreen;
+    private ToggleButton goToAddAdminScreen;
 
     @FXML
-    private Button goToGerirEmpresaScreen;
+    private ToggleButton goToGerirEmpresaScreen;
 
     @FXML
-    private Button goToGerirProdutoScreen;
+    private ToggleButton goToGerirProdutoScreen;
+    
+    @FXML
+    private ToggleButton goHome_btn;
     
     @FXML
     private Button terminarSessao_btn;
@@ -47,11 +54,24 @@ public class MenuAdminController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+//        AnchorPane pane;
+//        try {
+//            pane = FXMLLoader.load(getClass().getResource("/screens/MenuAdmin/HomeAdmin.fxml"));
+//            rootPane.getChildren().setAll(pane);
+//        } catch (IOException ex) {
+//            System.out.println("Erro: " + ex.getMessage());
+//        }
+        
+        ToggleGroup buttonGroup = new ToggleGroup();
+        goHome_btn.setToggleGroup(buttonGroup);
+        goToAddAdminScreen.setToggleGroup(buttonGroup);
+        goToGerirEmpresaScreen.setToggleGroup(buttonGroup);
+        goToGerirProdutoScreen.setToggleGroup(buttonGroup);
     }    
     
     @FXML
     void loadAddAdminPane(ActionEvent event) throws IOException {
+//        goToAddAdminScreen.setBack;
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/screens/MenuAdmin/AddAdmin/AddAdmin.fxml"));
         rootPane.getChildren().setAll(pane);
     }
@@ -65,6 +85,12 @@ public class MenuAdminController implements Initializable {
     @FXML
     void loadGerirProdutoPane(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/screens/MenuAdmin/GerirProduto/GerirProduto.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+    
+    @FXML
+    void loadMainAdminPage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/screens/MenuAdmin/HomeAdmin.fxml"));
         rootPane.getChildren().setAll(pane);
     }
     
