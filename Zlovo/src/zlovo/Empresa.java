@@ -134,6 +134,23 @@ public class Empresa implements Serializable{
         this.dono = dono;
     }
     
+    /**
+     * @return the produtos
+     */
+    public ArrayList<Produto> getProdutos() {
+        return produtos;
+    }
+
+    /**
+     * @param produtos the produtos to set
+     */
+    public void setProdutos(ArrayList<Produto> produtos) {
+        this.produtos = produtos;
+    }
     
+    @Override
+    public String toString() {
+        return this.getNome();
+    }
     
 }

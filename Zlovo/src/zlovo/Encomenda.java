@@ -5,16 +5,17 @@
  */
 package zlovo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Pedro
  */
-public class Encomenda {
+public class Encomenda implements Serializable{
     private int idEncomenda;
     private String descricao;
-    private int unidadeProduto;
+    private int qtd;
     private float precoTotal;
     
     /**
@@ -32,9 +33,9 @@ public class Encomenda {
         
     }
     
-    public Encomenda(String descricao, int unidadeProduto, float precoTotal) {
+    public Encomenda(String descricao, int qtd, float precoTotal) {
         this.descricao = descricao;
-        this.unidadeProduto = unidadeProduto;
+        this.qtd = qtd;
         this.precoTotal = precoTotal;
     }
 
@@ -65,19 +66,19 @@ public class Encomenda {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
+    
     /**
-     * @return the unidadeProduto
+     * @return the qtd
      */
-    public int getUnidadeProduto() {
-        return unidadeProduto;
+    public int getQtd() {
+        return qtd;
     }
 
     /**
-     * @param unidadeProduto the unidadeProduto to set
+     * @param qtd the qtd to set
      */
-    public void setUnidadeProduto(int unidadeProduto) {
-        this.unidadeProduto = unidadeProduto;
+    public void setQtd(int qtd) {
+        this.qtd = qtd;
     }
 
     /**
@@ -107,7 +108,5 @@ public class Encomenda {
     public void setProdutos(ArrayList<Produto> produtos) {
         this.produtos = produtos;
     }
-    
-    
     
 }

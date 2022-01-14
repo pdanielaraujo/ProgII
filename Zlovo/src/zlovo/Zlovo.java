@@ -64,8 +64,12 @@ public class Zlovo extends Application{
 //        empresa.setLocalidade("Barcelos");
 //        empresa.setNumTelef(911347554);
 //        empresa.setAtivo(true);
+//        for(Empresa emp : Singleton.instance.getEmpresasLocalidade().values()) {
+//            
+//        }
         System.out.println("antes: " + Singleton.instance.getEmpresasLocalidade());
         System.out.println("empresaaaas: " + Singleton.instance.getEmpresas());
+        System.out.println("produtoooos: " + Singleton.instance.getProdutos());
 //        Singleton.instance.adicionarEmpresas(empresa);
 //        Singleton.instance.adicionarEmpresasLocalidade(empresa, empresa.getLocalidade());
 //        System.out.println("depois: " + Singleton.instance.getEmpresasLocalidade().get(empresa.getLocalidade()));

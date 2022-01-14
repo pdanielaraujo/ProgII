@@ -19,7 +19,7 @@
       </AnchorPane>
       <VBox layoutX="30.0" layoutY="155.0" prefHeight="645.0" prefWidth="200.0" styleClass="sideBarContainer" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
          <children>
-            <ToggleButton fx:id="criarEmpresa_btn" mnemonicParsing="false" onAction="#loadAddEmpresaPage" prefHeight="50.0" prefWidth="200.0" styleClass="sideBarButton" text="Criar Empresa" textFill="WHITE">
+            <ToggleButton fx:id="criarEmpresa_btn" mnemonicParsing="false" onAction="#loadAddEmpresaPage" prefHeight="50.0" prefWidth="200.0" styleClass="sideBarButton" text="Adicionar Empresa" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

@@ -61,14 +61,6 @@ public class AddEmpresaController implements Initializable {
     void criarEmpresa(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.NONE);
         boolean exists = false;
-        Empresa empresa = new Empresa();
-        empresa.setIdEmpresa(Singleton.instance.incrementIdEmpresa(empresa));
-        empresa.setNome(nome_txt.getText());
-        empresa.setMorada(morada_txt.getText());
-        empresa.setLocalidade(localidade_txt.getText());
-        empresa.setNumTelef(Integer.parseInt(numTelef_txt.getText()));
-        empresa.setAtivo(true);
-        empresa.setDono(donoemp);
         
         if(nome_txt.getText().trim().isEmpty() || morada_txt.getText().trim().isEmpty() || localidade_txt.getText().trim().isEmpty()
                 || numTelef_txt.getText().trim().isEmpty()) {
@@ -78,6 +70,14 @@ public class AddEmpresaController implements Initializable {
             alert.setHeaderText("Tem de preencher os campos todos.");
             alert.show();
         } else {
+            Empresa empresa = new Empresa();
+            empresa.setIdEmpresa(Singleton.instance.incrementIdEmpresa(empresa));
+            empresa.setNome(nome_txt.getText());
+            empresa.setMorada(morada_txt.getText());
+            empresa.setLocalidade(localidade_txt.getText());
+            empresa.setNumTelef(Integer.parseInt(numTelef_txt.getText()));
+            empresa.setAtivo(true);
+            empresa.setDono(donoemp);
             if(Singleton.instance.getEmpresas().isEmpty()) {
                 Singleton.instance.adicionarEmpresas(empresa);
                 Singleton.instance.adicionarEmpresasLocalidade(empresa, empresa.getLocalidade());

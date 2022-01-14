@@ -41,6 +41,12 @@ public class MenuClienteController implements Initializable {
     private ToggleButton goHome_btn;
     
     @FXML
+    private ToggleButton goToAddEncomendaScreen;
+
+    @FXML
+    private ToggleButton goToPagarEncomendaScreen;
+    
+    @FXML
     private Label loggedUserName_label;
     
     @FXML
@@ -56,11 +62,26 @@ public class MenuClienteController implements Initializable {
         loggedUserName_label.setText(utilizador.getUsername());
         
         ToggleGroup buttonGroup = new ToggleGroup();
+        goHome_btn.setToggleGroup(buttonGroup);
+        goToAddEncomendaScreen.setToggleGroup(buttonGroup);
+        goToPagarEncomendaScreen.setToggleGroup(buttonGroup);
     }    
     
     @FXML
     void loadMainClientePage(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/screens/MenuCliente/HomeCliente.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+    
+    @FXML
+    void loadAddEncomendaPane(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/screens/MenuCliente/AddEncomenda/AddEncomenda.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+    
+    @FXML
+    void loadPagarEncomendaPane(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/screens/MenuCliente/PagarEncomenda/PagarEncomenda.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 

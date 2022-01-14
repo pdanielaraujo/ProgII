@@ -4,12 +4,81 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="645.0" prefWidth="1095.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="screens.MenuCliente.HomeClienteController">
+<AnchorPane id="AnchorPane" prefHeight="645.0" prefWidth="1095.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screens.MenuCliente.HomeClienteController">
    <children>
-      <Label layoutX="122.0" layoutY="77.0" text="A minha informação">
+      <Label layoutX="120.0" layoutY="80.0" text="A minha informação">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="155.0" layoutY="150.0" text="Nome:">
          <font>
             <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="155.0" layoutY="185.0" text="Username:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="155.0" layoutY="220.0" text="Num. CC.:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="155.0" layoutY="255.0" text="NIF:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="155.0" layoutY="290.0" text="Num. Telefone:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="155.0" layoutY="325.0" text="Morada:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="155.0" layoutY="360.0" text="Localidade:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="nome_label" layoutX="236.0" layoutY="156.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="username_label" layoutX="277.0" layoutY="191.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="numCC_label" layoutX="270.0" layoutY="226.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="nif_label" layoutX="207.0" layoutY="261.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="numTelef_label" layoutX="326.0" layoutY="296.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="morada_label" layoutX="253.0" layoutY="331.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="localidade_label" layoutX="284.0" layoutY="366.0">
+         <font>
+            <Font size="18.0" />
          </font>
       </Label>
    </children>

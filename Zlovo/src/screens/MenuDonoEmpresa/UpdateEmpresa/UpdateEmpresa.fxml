@@ -9,12 +9,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="645.0" prefWidth="1095.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screens.MenuDonoEmpresa.UpdateEmpresa.UpdateEmpresaController">
+<AnchorPane id="AnchorPane" prefHeight="645.0" prefWidth="1095.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screens.MenuDonoEmpresa.UpdateEmpresa.UpdateEmpresaController">
     <stylesheets>
         <URL value="@updateempresa.css" />
     </stylesheets>
    <children>
-      <TableView fx:id="empresas_table" layoutX="69.0" layoutY="54.0" prefHeight="400.0">
+      <TableView fx:id="empresas_table" layoutX="70.0" layoutY="55.0">
         <columns>
           <TableColumn fx:id="nomeEmpresa_col" prefWidth="75.0" text="Nome" />
           <TableColumn fx:id="moradaEmpresa_col" prefWidth="180.0" text="Morada" />
@@ -22,22 +22,22 @@
             <TableColumn fx:id="numTelefEmpresa_col" prefWidth="110.0" text="Num. Telefone" />
         </columns>
       </TableView>
-      <TextField layoutX="585.0" layoutY="99.0" prefHeight="35.0" prefWidth="400.0" promptText="Nome" styleClass="input">
+      <TextField layoutX="585.0" layoutY="100.0" prefHeight="35.0" prefWidth="400.0" promptText="Nome" styleClass="input">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField layoutX="585.0" layoutY="154.0" prefHeight="35.0" prefWidth="400.0" promptText="Morada" styleClass="input">
+      <TextField layoutX="585.0" layoutY="155.0" prefHeight="35.0" prefWidth="400.0" promptText="Morada" styleClass="input">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField layoutX="585.0" layoutY="209.0" prefHeight="35.0" prefWidth="400.0" promptText="Localidade" styleClass="input">
+      <TextField layoutX="585.0" layoutY="210.0" prefHeight="35.0" prefWidth="400.0" promptText="Localidade" styleClass="input">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField layoutX="585.0" layoutY="264.0" prefHeight="35.0" prefWidth="400.0" promptText="Número de Telefone" styleClass="input">
+      <TextField layoutX="585.0" layoutY="265.0" prefHeight="35.0" prefWidth="400.0" promptText="Número de Telefone" styleClass="input">
          <font>
             <Font size="16.0" />
          </font>

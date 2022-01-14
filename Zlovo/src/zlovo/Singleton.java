@@ -35,8 +35,10 @@ public class Singleton implements Serializable {
     private HashMap<String, ArrayList<Empresa>> empresasLocalidade = new HashMap<>();
     private HashMap<String, ArrayList<Empresa>> empresasCategoria = new HashMap<>();
     private HashMap<Integer, Empresa> empresas = new HashMap<>();
+    private HashMap<Integer, Produto> produtos = new HashMap<>();
     private static int newIdUtilizador = 1;
     private static int newIdEmpresa = 1;
+    private static int newIdProduto = 1;
 
     private Singleton() {
     }
@@ -100,6 +102,20 @@ public class Singleton implements Serializable {
     public void setEmpresas(HashMap<Integer, Empresa> empresas) {
         this.empresas = empresas;
     }
+    
+    /**
+     * @return the produtos
+     */
+    public HashMap<Integer, Produto> getProdutos() {
+        return produtos;
+    }
+
+    /**
+     * @param produtos the produtos to set
+     */
+    public void setProdutos(HashMap<Integer, Produto> produtos) {
+        this.produtos = produtos;
+    }
 
     public int incrementIdUtilizador(Utilizador utilizador) {
 
@@ -119,6 +135,11 @@ public class Singleton implements Serializable {
         newIdEmpresa++;
         return newIdEmpresa;
     }
+    
+    public int incrementIdProduto(Produto produto) {
+        newIdProduto++;
+        return newIdProduto;
+    }
 
     public static void guardarDados() {
         try {
@@ -127,13 +148,15 @@ public class Singleton implements Serializable {
             out.writeObject(instance.utilizadores);
             out.writeObject(instance.empresasLocalidade);
             out.writeObject(instance.empresas);
+            out.writeObject(instance.produtos);
             out.writeInt(newIdUtilizador);
             out.writeInt(newIdEmpresa);
+            out.writeInt(newIdProduto);
             out.close();
             fileOut.close();
             System.out.printf("Serialized data is saved in" + " dados.txt \n");
         } catch (IOException ex) {
-            System.out.println("Erro: " + ex.getMessage());
+            System.out.println("Erro: aaa" + ex.getMessage());
         }
     }
 
@@ -144,8 +167,10 @@ public class Singleton implements Serializable {
             instance.utilizadores = (HashMap<Integer, Utilizador>) in.readObject();
             instance.empresasLocalidade = (HashMap<String, ArrayList<Empresa>>) in.readObject();
             instance.empresas = (HashMap<Integer, Empresa>) in.readObject();
+            instance.produtos = (HashMap<Integer, Produto>) in.readObject();
             Singleton.newIdUtilizador = in.readInt();
             Singleton.newIdEmpresa = in.readInt();
+            Singleton.newIdProduto = in.readInt();
             in.close();
             fileIn.close();
             System.out.printf("Deserialized data is saved in" + " dados.txt \n");
@@ -164,6 +189,15 @@ public class Singleton implements Serializable {
         instance.empresas.put(empresa.getIdEmpresa(), empresa);
         Singleton.guardarDados();
     }
+    
+    /**
+     * Função para guardar produtos
+     */
+    public void adicionarProdutos(Produto produto) {
+        
+        instance.produtos.put(produto.getIdProduto(), produto);
+        Singleton.guardarDados();
+    }
 
     /**
      * Função para guardar empresas por localidade para um dono
@@ -172,13 +206,12 @@ public class Singleton implements Serializable {
         ArrayList<Empresa> localEmpresa = new ArrayList<>();
         
         for(Empresa e : instance.empresas.values()) {
-            if(empresa.getLocalidade().equals(e.getLocalidade())) {
-                localEmpresa.add(empresa); 
+            if(e.getLocalidade().equals(empresa.getLocalidade())) {
+                localEmpresa.add(e); 
+                instance.empresasLocalidade.put(empresa.getLocalidade(), localEmpresa);
+                Singleton.guardarDados();
             }
         }
-        instance.empresasLocalidade.put(empresa.getLocalidade(), localEmpresa);
-        Singleton.guardarDados();
-        
     }
 
     /**

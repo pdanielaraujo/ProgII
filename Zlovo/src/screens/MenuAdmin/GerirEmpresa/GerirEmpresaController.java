@@ -130,8 +130,10 @@ public class GerirEmpresaController implements Initializable {
             Empresa empresa = Singleton.instance.getEmpresas().get(key);
             if(empresa.isAtivo()) {
                 lista_empresas.add(empresa);
+                System.out.println("empresa: " + empresa.getNome() + "lista produtos: " + empresa.getProdutos());
             }
         }
+        
         
         col_nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         col_localidade.setCellValueFactory(new PropertyValueFactory<>("localidade"));

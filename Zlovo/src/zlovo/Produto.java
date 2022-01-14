@@ -5,17 +5,22 @@
  */
 package zlovo;
 
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  *
  * @author Pedro
  */
-public class Produto {
+public class Produto implements Serializable{
+    private static final long serialVersionUID = 7086318999034384055L;
     private int idProduto;
     private String nome;
     private String categoria;
     private String descricao;
+    private Empresa empresa;
     private HashMap<String, Float> preco = new HashMap<>();
     
     public Produto() {
@@ -29,76 +34,52 @@ public class Produto {
         this.preco = preco;
     }
 
-    /**
-     * @return the idProduto
-     */
     public int getIdProduto() {
         return idProduto;
     }
 
-    /**
-     * @param idProduto the idProduto to set
-     */
     public void setIdProduto(int idProduto) {
         this.idProduto = idProduto;
     }
 
-    /**
-     * @return the nome
-     */
     public String getNome() {
         return nome;
     }
 
-    /**
-     * @param nome the nome to set
-     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    /**
-     * @return the categoria
-     */
     public String getCategoria() {
         return categoria;
     }
 
-    /**
-     * @param categoria the categoria to set
-     */
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
-    /**
-     * @return the descricao
-     */
     public String getDescricao() {
         return descricao;
     }
 
-    /**
-     * @param descricao the descricao to set
-     */
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
 
-    /**
-     * @return the preco
-     */
     public HashMap<String, Float> getPreco() {
         return preco;
     }
-
-    /**
-     * @param preco the preco to set
-     */
+    
     public void setPreco(HashMap<String, Float> preco) {
         this.preco = preco;
     }
     
+    public Empresa getEmpresa() {
+        return empresa;
+    }
     
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
     
 }
