@@ -14,6 +14,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
+import java.util.Random;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
@@ -36,9 +37,12 @@ public class Singleton implements Serializable {
     private HashMap<String, ArrayList<Empresa>> empresasCategoria = new HashMap<>();
     private HashMap<Integer, Empresa> empresas = new HashMap<>();
     private HashMap<Integer, Produto> produtos = new HashMap<>();
+    private HashMap<Integer, Encomenda> encomendas = new HashMap<>();
     private static int newIdUtilizador = 1;
     private static int newIdEmpresa = 1;
     private static int newIdProduto = 1;
+    private static int newIdEncomenda = 1;
+    private static int newEntidadeEmoresa = 0;
 
     private Singleton() {
     }
@@ -116,6 +120,20 @@ public class Singleton implements Serializable {
     public void setProdutos(HashMap<Integer, Produto> produtos) {
         this.produtos = produtos;
     }
+    
+    /**
+     * @return the encomendas
+     */
+    public HashMap<Integer, Encomenda> getEncomendas() {
+        return encomendas;
+    }
+
+    /**
+     * @param encomendas the encomendas to set
+     */
+    public void setEncomendas(HashMap<Integer, Encomenda> encomendas) {
+        this.encomendas = encomendas;
+    }
 
     public int incrementIdUtilizador(Utilizador utilizador) {
 
@@ -140,6 +158,17 @@ public class Singleton implements Serializable {
         newIdProduto++;
         return newIdProduto;
     }
+    
+    public int incrementIdEncomenda(Encomenda encomenda) {
+        newIdEncomenda++;
+        return newIdEncomenda;
+    }
+    
+    public int newEntidadeEmpresa(Empresa empresa) {
+        Random rand = new Random();
+        newEntidadeEmoresa = 10000 + rand.nextInt(90000);
+        return newEntidadeEmoresa;
+    }
 
     public static void guardarDados() {
         try {
@@ -149,9 +178,11 @@ public class Singleton implements Serializable {
             out.writeObject(instance.empresasLocalidade);
             out.writeObject(instance.empresas);
             out.writeObject(instance.produtos);
+            out.writeObject(instance.encomendas);
             out.writeInt(newIdUtilizador);
             out.writeInt(newIdEmpresa);
             out.writeInt(newIdProduto);
+            out.writeInt(newIdEncomenda);
             out.close();
             fileOut.close();
             System.out.printf("Serialized data is saved in" + " dados.txt \n");
@@ -168,9 +199,11 @@ public class Singleton implements Serializable {
             instance.empresasLocalidade = (HashMap<String, ArrayList<Empresa>>) in.readObject();
             instance.empresas = (HashMap<Integer, Empresa>) in.readObject();
             instance.produtos = (HashMap<Integer, Produto>) in.readObject();
+            instance.encomendas = (HashMap<Integer, Encomenda>) in.readObject();
             Singleton.newIdUtilizador = in.readInt();
             Singleton.newIdEmpresa = in.readInt();
             Singleton.newIdProduto = in.readInt();
+            Singleton.newIdEncomenda = in.readInt();
             in.close();
             fileIn.close();
             System.out.printf("Deserialized data is saved in" + " dados.txt \n");
@@ -196,6 +229,15 @@ public class Singleton implements Serializable {
     public void adicionarProdutos(Produto produto) {
         
         instance.produtos.put(produto.getIdProduto(), produto);
+        Singleton.guardarDados();
+    }
+    
+    /**
+     * Função para guardar produtos
+     */
+    public void adicionarEncomendas(Encomenda encomenda) {
+        
+        instance.encomendas.put(encomenda.getIdEncomenda(), encomenda);
         Singleton.guardarDados();
     }
 

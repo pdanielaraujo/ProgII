@@ -222,7 +222,7 @@ public class GerirProdutosController implements Initializable {
         System.out.println("produtos" + produto.getPreco());
         
         descricaoPreco_col.setCellValueFactory((CellDataFeatures<Map.Entry<String, Float>, String> param) -> new SimpleObjectProperty(param.getValue().getKey()));
-        preco_col.setCellValueFactory((CellDataFeatures<Map.Entry<String, Float>, Float> param) -> new SimpleObjectProperty(param.getValue().getValue()));
+        preco_col.setCellValueFactory((CellDataFeatures<Map.Entry<String, Float>, Float> param) -> new SimpleObjectProperty(param.getValue().getValue() + "€"));
         precos_table.getItems().setAll(produto.getPreco().entrySet());
     }
     

@@ -69,7 +69,11 @@ public class Zlovo extends Application{
 //        }
         System.out.println("antes: " + Singleton.instance.getEmpresasLocalidade());
         System.out.println("empresaaaas: " + Singleton.instance.getEmpresas());
+        for(Empresa emp : Singleton.instance.getEmpresas().values()) {
+            System.out.println("empresaaaas/encomendas: " + emp.getEncomendas());
+        }
         System.out.println("produtoooos: " + Singleton.instance.getProdutos());
+        System.out.println("encomendasss: " + Singleton.instance.getEncomendas());
 //        Singleton.instance.adicionarEmpresas(empresa);
 //        Singleton.instance.adicionarEmpresasLocalidade(empresa, empresa.getLocalidade());
 //        System.out.println("depois: " + Singleton.instance.getEmpresasLocalidade().get(empresa.getLocalidade()));

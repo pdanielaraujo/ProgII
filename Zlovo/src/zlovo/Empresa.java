@@ -19,8 +19,10 @@ public class Empresa implements Serializable{
     private String morada;
     private String localidade;
     private int numTelef;
+    private int entidade;
     private boolean ativo;
     private ArrayList<Produto> produtos = new ArrayList<>();
+    private ArrayList<Encomenda> encomendas = new ArrayList<>();
     private DonoEmpresa dono;
     
     public Empresa() {
@@ -146,6 +148,34 @@ public class Empresa implements Serializable{
      */
     public void setProdutos(ArrayList<Produto> produtos) {
         this.produtos = produtos;
+    }
+    
+    /**
+     * @return the encomendas
+     */
+    public ArrayList<Encomenda> getEncomendas() {
+        return encomendas;
+    }
+
+    /**
+     * @param encomendas the encomendas to set
+     */
+    public void setEncomendas(ArrayList<Encomenda> encomendas) {
+        this.encomendas = encomendas;
+    }
+    
+    /**
+     * @return the entidade
+     */
+    public int getEntidade() {
+        return entidade;
+    }
+
+    /**
+     * @param entidade the entidade to set
+     */
+    public void setEntidade(int entidade) {
+        this.entidade = entidade;
     }
     
     @Override

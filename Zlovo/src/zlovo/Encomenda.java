@@ -13,19 +13,20 @@ import java.util.ArrayList;
  * @author Pedro
  */
 public class Encomenda implements Serializable{
+    private static final long serialVersionUID = 7044540340619659266L;
     private int idEncomenda;
     private String descricao;
     private int qtd;
     private float precoTotal;
     
     /**
-     * 0 = Por Confirmar
+     * 0 = Por pagar
      * 1 = Confirmada
      * 2 = Efetuada
      * 3 = Paga ::::???????????????
      */
     private int estado;
-    private ArrayList<Produto> produtos = new ArrayList<Produto>();
+    private ArrayList<Produto> produtos = new ArrayList<>();
     private Empresa empresa;
     
     
@@ -107,6 +108,34 @@ public class Encomenda implements Serializable{
      */
     public void setProdutos(ArrayList<Produto> produtos) {
         this.produtos = produtos;
+    }
+
+    /**
+     * @return the estado
+     */
+    public int getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    /**
+     * @return the empresa
+     */
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    /**
+     * @param empresa the empresa to set
+     */
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
     
 }

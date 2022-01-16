@@ -76,6 +76,7 @@ public class AddEmpresaController implements Initializable {
             empresa.setMorada(morada_txt.getText());
             empresa.setLocalidade(localidade_txt.getText());
             empresa.setNumTelef(Integer.parseInt(numTelef_txt.getText()));
+            empresa.setEntidade(Singleton.instance.newEntidadeEmpresa(empresa));
             empresa.setAtivo(true);
             empresa.setDono(donoemp);
             if(Singleton.instance.getEmpresas().isEmpty()) {
