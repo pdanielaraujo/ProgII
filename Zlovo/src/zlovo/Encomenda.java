@@ -21,14 +21,15 @@ public class Encomenda implements Serializable{
     
     /**
      * 0 = Por pagar
-     * 1 = Confirmada
-     * 2 = Efetuada
-     * 3 = Paga ::::???????????????
+     * 1 = Paga
+     * 2 = Em entrega
+     * 3 = Entregue
+     * 4 = Anulada ::::???????????????
      */
     private int estado;
     private ArrayList<Produto> produtos = new ArrayList<>();
     private Empresa empresa;
-    
+    private Motard motard;
     
     public Encomenda() {
         
@@ -40,102 +41,68 @@ public class Encomenda implements Serializable{
         this.precoTotal = precoTotal;
     }
 
-    /**
-     * @return the idEncomenda
-     */
     public int getIdEncomenda() {
         return idEncomenda;
     }
 
-    /**
-     * @param idEncomenda the idEncomenda to set
-     */
     public void setIdEncomenda(int idEncomenda) {
         this.idEncomenda = idEncomenda;
     }
 
-    /**
-     * @return the descricao
-     */
     public String getDescricao() {
         return descricao;
     }
 
-    /**
-     * @param descricao the descricao to set
-     */
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    
-    /**
-     * @return the qtd
-     */
+
     public int getQtd() {
         return qtd;
     }
 
-    /**
-     * @param qtd the qtd to set
-     */
     public void setQtd(int qtd) {
         this.qtd = qtd;
     }
 
-    /**
-     * @return the precoTotal
-     */
     public float getPrecoTotal() {
         return precoTotal;
     }
 
-    /**
-     * @param precoTotal the precoTotal to set
-     */
     public void setPrecoTotal(float precoTotal) {
         this.precoTotal = precoTotal;
     }
 
-    /**
-     * @return the produtos
-     */
     public ArrayList<Produto> getProdutos() {
         return produtos;
     }
 
-    /**
-     * @param produtos the produtos to set
-     */
     public void setProdutos(ArrayList<Produto> produtos) {
         this.produtos = produtos;
     }
 
-    /**
-     * @return the estado
-     */
     public int getEstado() {
         return estado;
     }
 
-    /**
-     * @param estado the estado to set
-     */
     public void setEstado(int estado) {
         this.estado = estado;
     }
 
-    /**
-     * @return the empresa
-     */
     public Empresa getEmpresa() {
         return empresa;
     }
 
-    /**
-     * @param empresa the empresa to set
-     */
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public Motard getMotard() {
+        return motard;
+    }
+
+    public void setMotard(Motard motard) {
+        this.motard = motard;
     }
     
 }

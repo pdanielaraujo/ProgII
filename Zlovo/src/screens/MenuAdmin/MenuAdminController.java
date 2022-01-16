@@ -41,6 +41,9 @@ public class MenuAdminController implements Initializable {
     private ToggleButton goToGerirProdutoScreen;
     
     @FXML
+    private ToggleButton goToGerirEncomendasScreen;
+    
+    @FXML
     private ToggleButton goHome_btn;
     
     @FXML
@@ -67,6 +70,7 @@ public class MenuAdminController implements Initializable {
         goToAddAdminScreen.setToggleGroup(buttonGroup);
         goToGerirEmpresaScreen.setToggleGroup(buttonGroup);
         goToGerirProdutoScreen.setToggleGroup(buttonGroup);
+        goToGerirEncomendasScreen.setToggleGroup(buttonGroup);
     }    
     
     @FXML
@@ -85,6 +89,12 @@ public class MenuAdminController implements Initializable {
     @FXML
     void loadGerirProdutoPane(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/screens/MenuAdmin/GerirProduto/GerirProduto.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+    
+    @FXML
+    void loadGerirEncomendaPane(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/screens/MenuAdmin/GerirEncomendaPaga/GerirEncomendaPaga.fxml"));
         rootPane.getChildren().setAll(pane);
     }
     

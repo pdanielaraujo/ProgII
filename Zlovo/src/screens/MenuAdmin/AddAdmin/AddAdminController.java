@@ -112,6 +112,7 @@ public class AddAdminController implements Initializable {
                 motard.setNumTelef(Integer.parseInt(numTelef_txt.getText()));
                 motard.setMorada(morada_txt.getText());
                 motard.setLocalidade(localidade_txt.getText());
+                motard.setEmServico(false);
                 Singleton.instance.adicionarUtilizadores(motard);
             }
         }

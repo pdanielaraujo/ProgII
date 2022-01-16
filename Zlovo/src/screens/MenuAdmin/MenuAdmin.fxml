@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="695.0" prefWidth="1295.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screens.MenuAdmin.MenuAdminController">
+<AnchorPane prefHeight="695.0" prefWidth="1295.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screens.MenuAdmin.MenuAdminController">
     <stylesheets>
         <URL value="@menuadmin.css" />
     </stylesheets>
@@ -37,6 +37,14 @@
                </cursor>
             </ToggleButton>
             <ToggleButton fx:id="goToGerirProdutoScreen" mnemonicParsing="false" onAction="#loadGerirProdutoPane" prefHeight="50.0" prefWidth="200.0" styleClass="sideBarButton" text="Categorias Produto" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ToggleButton>
+            <ToggleButton fx:id="goToGerirEncomendasScreen" mnemonicParsing="false" onAction="#loadGerirEncomendaPane" prefHeight="50.0" prefWidth="200.0" styleClass="sideBarButton" text="Encomendas" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

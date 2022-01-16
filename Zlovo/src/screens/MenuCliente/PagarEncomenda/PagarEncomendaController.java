@@ -69,7 +69,6 @@ public class PagarEncomendaController implements Initializable {
             Encomenda encomenda = Singleton.instance.getEncomendas().get(key);
             if(encomenda.getEstado() == 0) {
                 lista_encomendas.add(encomenda);
-                System.out.println("empresa: " + encomenda.getEmpresa()+ "lista produtos: " + encomenda.getProdutos());
             }
         }
         

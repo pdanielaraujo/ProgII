@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package screens.MenuDonoEmpresa.ConfirmarEncomendas;
+package screens.MenuAdmin.GerirEncomendaPaga;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,16 +11,13 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
+
+import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
-import zlovo.DonoEmpresa;
 import zlovo.Empresa;
 import zlovo.Encomenda;
 import zlovo.Motard;
@@ -32,7 +29,7 @@ import zlovo.Utilizador;
  *
  * @author Pedro
  */
-public class ConfirmarEncomendaController implements Initializable {
+public class GerirEncomendaPagaController implements Initializable {
     
     @FXML
     private TableView<Encomenda> encomendas_table;
@@ -48,13 +45,21 @@ public class ConfirmarEncomendaController implements Initializable {
 
     @FXML
     private TableColumn<Encomenda, String> estadoEnc_col;
+    
+    @FXML
+    private TableColumn<Encomenda, Motard> motardEnc_col;
+    
+    @FXML
+    private TableView<Motard> motards_table;
 
     @FXML
-    private Button confirmarEnc_btn;
+    private TableColumn<Motard, String> nomeMotard_col;
 
     @FXML
-    private Button anularEnc_btn;
+    private TableColumn<Motard, Integer> numTelef_col;
 
+    @FXML
+    private TableColumn<Motard, String> localidadeMotard_col;
 
     /**
      * Initializes the controller class.
@@ -62,6 +67,7 @@ public class ConfirmarEncomendaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         atualizarTabelaEncomendas();
+        atualizarTabelaMotards();
     }
     
     void atualizarTabelaEncomendas() {
@@ -69,9 +75,8 @@ public class ConfirmarEncomendaController implements Initializable {
         
         for(Integer key : Singleton.instance.getEncomendas().keySet()) {
             Encomenda encomenda = Singleton.instance.getEncomendas().get(key);
-            if(encomenda.getEstado() == 0 || encomenda.getEstado() == 1) {
+            if(encomenda.getEstado() == 1 || encomenda.getEstado() == 2) {
                 lista_encomendas.add(encomenda);
-                System.out.println("empresa: " + encomenda.getEmpresa()+ "lista produtos: " + encomenda.getProdutos());
             }
         }
         
@@ -81,53 +86,50 @@ public class ConfirmarEncomendaController implements Initializable {
         estadoEnc_col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Encomenda, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Encomenda, String> param) {
-                if(param.getValue().getEstado() == 0) {
-                    return new SimpleObjectProperty<>("Por pagar");
-                } else if(param.getValue().getEstado() == 1) {
+                if(param.getValue().getEstado() == 1) {
                     return new SimpleObjectProperty<>("Paga");
-                } else if(param.getValue().getEstado() == 4){
-                    return new SimpleObjectProperty<>("Anulada");
+                } else if(param.getValue().getEstado() == 2) {
+                    return new SimpleObjectProperty<>("Em entrega");
                 }
                 return (ObservableValue<String>) param;
             }
-            
+        });
+        motardEnc_col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Encomenda, Motard>, ObservableValue<Motard>>() {
+            @Override
+            public ObservableValue<Motard> call(TableColumn.CellDataFeatures<Encomenda, Motard> param) {
+                if(param.getValue().getEstado() == 1) {
+                    return new SimpleObjectProperty<>();
+                } else if(param.getValue().getEstado() == 2) {
+                    return new SimpleObjectProperty<>(param.getValue().getMotard());
+                }
+                return (ObservableValue<Motard>) param;
+            }
         });
         
         encomendas_table.setItems(lista_encomendas);
     }
     
-    @FXML
-    void anularEncomenda(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.NONE);
-        Encomenda encomenda = encomendas_table.getSelectionModel().getSelectedItem();
+    void atualizarTabelaMotards() {
+        ObservableList<Motard> lista_motards = FXCollections.observableArrayList();
         
-        if(encomenda == null) {
-            alert.setAlertType(Alert.AlertType.WARNING);
-            alert.setTitle("Erro: Sem seleção");
-            alert.setHeaderText("Tem de selecionar uma empresa.");
-            alert.show();
-        } else {
-            encomenda.setEstado(4);
-            Singleton.instance.adicionarEncomendas(encomenda);
-            atualizarTabelaEncomendas();
+        for(Integer key : Singleton.instance.getUtilizadores().keySet()) {
+            Utilizador motardUtilizador = Singleton.instance.getUtilizadores().get(key);
+            if(motardUtilizador instanceof Motard) {
+                Motard motard = (Motard) motardUtilizador;
+                if(!motard.isEmServico()) {
+                    System.out.println("mot: " + motard);
+                    System.out.println("mot: " + motard.isEmServico());
+                    lista_motards.add(motard);
+                }
+            }
         }
-    }
-
-    @FXML
-    void confirmarEncomenda(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.NONE);
-        Encomenda encomenda = encomendas_table.getSelectionModel().getSelectedItem();
         
-        if(encomenda == null) {
-            alert.setAlertType(Alert.AlertType.WARNING);
-            alert.setTitle("Erro: Sem seleção");
-            alert.setHeaderText("Tem de selecionar uma empresa.");
-            alert.show();
-        } else {
-            encomenda.setEstado(1);
-            Singleton.instance.adicionarEncomendas(encomenda);
-            atualizarTabelaEncomendas();
-        }
+        
+        nomeMotard_col.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        localidadeMotard_col.setCellValueFactory(new PropertyValueFactory<>("localidade"));
+        numTelef_col.setCellValueFactory(new PropertyValueFactory<>("numTelef"));
+        
+        motards_table.setItems(lista_motards);
     }
     
 }

@@ -318,6 +318,7 @@ public class AddEncomendaController implements Initializable {
         alert.setHeaderText("A sua encomenda foi registada com sucesso.");
         alert.show();
         System.out.println("encomenda valor: " + encomenda.getPrecoTotal());
+        containerCarrinho.getChildren().clear();
     }
     
 }

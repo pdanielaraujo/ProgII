@@ -53,6 +53,9 @@ public class MenuDonoEmpresaController implements Initializable {
     private ToggleButton updateEmpresa_btn;
     
     @FXML
+    private ToggleButton confirmarEncomenda_btn;
+    
+    @FXML
     public HomeDonoEmpresaController homeDonoEmpresaController;
     
     private DonoEmpresa donoemp = (DonoEmpresa) stage.getUserData();
@@ -69,6 +72,7 @@ public class MenuDonoEmpresaController implements Initializable {
         criarEmpresa_btn.setToggleGroup(buttonGroup);
         updateEmpresa_btn.setToggleGroup(buttonGroup);
         gerirProduto_btn.setToggleGroup(buttonGroup);
+        confirmarEncomenda_btn.setToggleGroup(buttonGroup);
     }
 
     @FXML
@@ -93,6 +97,12 @@ public class MenuDonoEmpresaController implements Initializable {
     @FXML
     void loadGerirProdutoPage(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/screens/MenuDonoEmpresa/ProdutosEmpresa/GerirProdutos.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+    
+    @FXML
+    void loadConfirmarEncomendaPage(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/screens/MenuDonoEmpresa/ConfirmarEncomendas/ConfirmarEncomenda.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 

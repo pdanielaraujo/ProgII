@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="645.0" prefWidth="1095.0" styleClass="mainFxmlClass" stylesheets="@../../MenuDonoEmpresa/AddEmpresa/addempresa.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="screens.MenuAdmin.GerirEncomendaPaga.GerirEncomendaPagaController">
+   <children>
+      <TableView fx:id="encomendas_table" layoutX="41.0" layoutY="52.0">
+         <columns>
+            <TableColumn fx:id="idEnc_col" prefWidth="100.0" text="ID Encomenda" />
+            <TableColumn fx:id="empresaEnc_col" prefWidth="85.0" text="Empresa" />
+            <TableColumn fx:id="precoTotalEnc_col" prefWidth="85.0" text="Preço Total" />
+            <TableColumn fx:id="estadoEnc_col" prefWidth="85.0" text="Estado" />
+            <TableColumn fx:id="motardEnc_col" prefWidth="85.0" text="Motard" />
+         </columns>
+      </TableView>
+      <TableView fx:id="motards_table" layoutX="569.0" layoutY="52.0">
+        <columns>
+          <TableColumn fx:id="nomeMotard_col" prefWidth="100.0" text="Nome" />
+          <TableColumn fx:id="numTelef_col" prefWidth="100.0" text="Num. Telefone" />
+            <TableColumn fx:id="localidadeMotard_col" prefWidth="75.0" text="Localidade" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

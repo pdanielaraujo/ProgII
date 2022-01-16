@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="695.0" prefWidth="1295.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screens.MenuDonoEmpresa.MenuDonoEmpresaController">
+<AnchorPane prefHeight="695.0" prefWidth="1295.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screens.MenuDonoEmpresa.MenuDonoEmpresaController">
     <stylesheets>
         <URL value="@menudonoempresa.css" />
     </stylesheets>
@@ -43,7 +43,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ToggleButton>
-            <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="sideBarButton" text="ToggleButton" textFill="WHITE">
+            <ToggleButton fx:id="confirmarEncomenda_btn" mnemonicParsing="false" onAction="#loadConfirmarEncomendaPage" prefHeight="50.0" prefWidth="200.0" styleClass="sideBarButton" text="Confirmar encomenda" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
