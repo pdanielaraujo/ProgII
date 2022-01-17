@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package zlovo;
 
 import java.io.Serializable;
@@ -38,142 +33,82 @@ public class Empresa implements Serializable{
         this.dono = dono;
     }
 
-    /**
-     * @return the idEmpresa
-     */
     public int getIdEmpresa() {
         return idEmpresa;
     }
 
-    /**
-     * @param idEmpresa the idEmpresa to set
-     */
     public void setIdEmpresa(int idEmpresa) {
         this.idEmpresa = idEmpresa;
     }
 
-    /**
-     * @return the nome
-     */
     public String getNome() {
         return nome;
     }
 
-    /**
-     * @param nome the nome to set
-     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    /**
-     * @return the morada
-     */
     public String getMorada() {
         return morada;
     }
 
-    /**
-     * @param morada the morada to set
-     */
     public void setMorada(String morada) {
         this.morada = morada;
     }
 
-    /**
-     * @return the localidade
-     */
     public String getLocalidade() {
         return localidade;
     }
 
-    /**
-     * @param localidade the localidade to set
-     */
     public void setLocalidade(String localidade) {
         this.localidade = localidade;
     }
 
-    /**
-     * @return the numTelef
-     */
     public int getNumTelef() {
         return numTelef;
     }
 
-    /**
-     * @param numTelef the numTelef to set
-     */
     public void setNumTelef(int numTelef) {
         this.numTelef = numTelef;
     }
 
-    /**
-     * @return the ativo
-     */
     public boolean isAtivo() {
         return ativo;
     }
 
-    /**
-     * @param ativo the ativo to set
-     */
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
 
-    /**
-     * @return the dono
-     */
     public DonoEmpresa getDono() {
         return dono;
     }
 
-    /**
-     * @param dono the dono to set
-     */
     public void setDono(DonoEmpresa dono) {
         this.dono = dono;
     }
     
-    /**
-     * @return the produtos
-     */
     public ArrayList<Produto> getProdutos() {
         return produtos;
     }
 
-    /**
-     * @param produtos the produtos to set
-     */
     public void setProdutos(ArrayList<Produto> produtos) {
         this.produtos = produtos;
     }
     
-    /**
-     * @return the encomendas
-     */
     public ArrayList<Encomenda> getEncomendas() {
         return encomendas;
     }
 
-    /**
-     * @param encomendas the encomendas to set
-     */
     public void setEncomendas(ArrayList<Encomenda> encomendas) {
         this.encomendas = encomendas;
     }
     
-    /**
-     * @return the entidade
-     */
     public int getEntidade() {
         return entidade;
     }
 
-    /**
-     * @param entidade the entidade to set
-     */
     public void setEntidade(int entidade) {
         this.entidade = entidade;
     }

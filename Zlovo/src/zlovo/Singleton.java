@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package zlovo;
 
 import java.io.FileInputStream;
@@ -50,87 +45,43 @@ public class Singleton implements Serializable {
     protected Object readResolve() {
         return instance;
     }
-    
-    /**
-     * @return the utilizador
-     */
-    public Utilizador getUtilizador() {
-        return utilizador;
-    }
 
-    /**
-     * @param utilizador the utilizador to set
-     */
-    public void setUtilizador(Utilizador utilizador) {
-        this.utilizador = utilizador;
-    }
-
-    /**
-     * @return the utilizadores
-     */
     public HashMap<Integer, Utilizador> getUtilizadores() {
         return utilizadores;
     }
 
-    /**
-     * @param utilizadores the utilizadores to set
-     */
     public void setUtilizadores(HashMap<Integer, Utilizador> utilizadores) {
         this.utilizadores = utilizadores;
     }
 
-    /**
-     * @return the empresasLocalidade
-     */
     public HashMap<String, ArrayList<Empresa>> getEmpresasLocalidade() {
         return empresasLocalidade;
     }
 
-    /**
-     * @param empresasLocalidade the empresasLocalidade to set
-     */
     public void setEmpresasLocalidade(HashMap<String, ArrayList<Empresa>> empresasLocalidade) {
         this.empresasLocalidade = empresasLocalidade;
     }
-    
-    /**
-     * @return the empresas
-     */
+
     public HashMap<Integer, Empresa> getEmpresas() {
         return empresas;
     }
 
-    /**
-     * @param empresas the empresas to set
-     */
     public void setEmpresas(HashMap<Integer, Empresa> empresas) {
         this.empresas = empresas;
     }
-    
-    /**
-     * @return the produtos
-     */
+
     public HashMap<Integer, Produto> getProdutos() {
         return produtos;
     }
 
-    /**
-     * @param produtos the produtos to set
-     */
     public void setProdutos(HashMap<Integer, Produto> produtos) {
         this.produtos = produtos;
     }
-    
-    /**
-     * @return the encomendas
-     */
+
     public HashMap<Integer, Encomenda> getEncomendas() {
         return encomendas;
     }
 
-    /**
-     * @param encomendas the encomendas to set
-     */
     public void setEncomendas(HashMap<Integer, Encomenda> encomendas) {
         this.encomendas = encomendas;
     }
@@ -262,8 +213,11 @@ public class Singleton implements Serializable {
     public void adicionarUtilizadores(Utilizador utilizador) {
         Alert alert = new Alert(Alert.AlertType.NONE);
         Stage stage = zlovo.Zlovo.guiStage;
+        
+        // variável de controle de utilizadores existentes
         boolean exists = false;
 
+        // se o hashmap estiver vazio, insere o utilizador
         if (instance.utilizadores.isEmpty()) {
             instance.utilizadores.putIfAbsent(utilizador.getIdUtilizador(), utilizador);
             Singleton.guardarDados();
@@ -273,6 +227,9 @@ public class Singleton implements Serializable {
             alert.setHeaderText("A sua conta foi criada com sucesso.");
             alert.show();
         } else {
+            /* se não estiver vazio, percorre os valores do hashmap, verifica se existe
+            um utilizador como o username inserido, e se existir lança um alerta no ecrã
+            e a variável de controle*/
             for (Utilizador u : instance.utilizadores.values()) {
                 if (utilizador.getUsername().equals(u.getUsername())) {
                     exists = true;
@@ -285,8 +242,6 @@ public class Singleton implements Serializable {
             if (!exists) {
                 instance.utilizadores.putIfAbsent(utilizador.getIdUtilizador(), utilizador);
                 Singleton.guardarDados();
-                System.out.println("REGISTO NAO EXISTE");
-                System.out.println("ID USER: " + utilizador.getIdUtilizador());
                 alert.setAlertType(Alert.AlertType.INFORMATION);
                 alert.setTitle("Info: Conta criada");
                 alert.setHeaderText("A sua conta foi criada com sucesso.");
@@ -296,14 +251,13 @@ public class Singleton implements Serializable {
     }
 
     public Utilizador login(String username, String password) {
+        Alert alert = new Alert(Alert.AlertType.NONE);
         Utilizador utilizador = null;
 
         for (Utilizador u : instance.utilizadores.values()) {
             if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
                 utilizador = u;
-                System.out.println(utilizador.getUsername());
-                break;
-            }
+            } 
         }
         return utilizador;
     }
@@ -349,8 +303,6 @@ public class Singleton implements Serializable {
                 }
             }
             if (!exists) {
-                System.out.println("REGISTO NAO EXISTE");
-                System.out.println("ID USER: " + utilizador.getIdUtilizador());
                 instance.utilizadores.putIfAbsent(utilizador.getIdUtilizador(), utilizador);
                 Singleton.guardarDados();
 

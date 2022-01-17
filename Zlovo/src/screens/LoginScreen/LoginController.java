@@ -73,10 +73,7 @@ public class LoginController implements Initializable {
                 alert.show();
             } else {
                 Utilizador utilizador = s.login(username_txt.getText(), pass_txt.getText());
-            
-                System.out.println(utilizador.getNome());
-                System.out.println(utilizador);
-            
+                System.out.println("arroz");
                 if(utilizador instanceof Admin){
                     System.out.println("É um admin");
                     try{
@@ -138,30 +135,13 @@ public class LoginController implements Initializable {
                 }
             }
         } catch(NullPointerException npe) {
+            System.out.println("batata");
             alert.setAlertType(Alert.AlertType.ERROR);
             alert.setTitle("Erro: Campos errados");
             alert.setHeaderText("Conta não existe ou credenciais erradas.");
             alert.show();
             System.out.println("Erro: Conta não existe ou credenciais erradas " + npe.getMessage());
         }
-        
-        
-        
-        
-//        Utilizador utilizador = 
-//        utilizador.login(nome_txt.getText(), pass_txt.getText());
-        
-//        try{
-//            FileInputStream fileIn = new FileInputStream("utilizadores.txt");
-//            ObjectInputStream in = new ObjectInputStream(fileIn);
-//            utilizador = (Utilizador) in.readObject();
-//            in.close();
-//            fileIn.close();
-//        }catch(IOException ex){
-//            System.out.println("Erro: " + ex.getMessage());
-//        }catch(ClassNotFoundException ex){
-//            System.out.println("Contacto class not found. " + ex.getMessage());
-//        }
         
     }
     

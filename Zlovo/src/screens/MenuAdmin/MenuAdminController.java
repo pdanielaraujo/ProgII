@@ -17,10 +17,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import zlovo.Utilizador;
 
 /**
  * FXML Controller class
@@ -51,19 +53,18 @@ public class MenuAdminController implements Initializable {
     
     @FXML
     private AnchorPane rootPane;
+    
+    @FXML
+    private Label loggedUserName_label;
+    
+    private Utilizador utilizador = (Utilizador) stage.getUserData();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        AnchorPane pane;
-//        try {
-//            pane = FXMLLoader.load(getClass().getResource("/screens/MenuAdmin/HomeAdmin.fxml"));
-//            rootPane.getChildren().setAll(pane);
-//        } catch (IOException ex) {
-//            System.out.println("Erro: " + ex.getMessage());
-//        }
+        loggedUserName_label.setText(utilizador.getUsername());
         
         ToggleGroup buttonGroup = new ToggleGroup();
         goHome_btn.setToggleGroup(buttonGroup);

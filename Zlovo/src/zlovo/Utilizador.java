@@ -1,16 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package zlovo;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  *
@@ -41,129 +31,75 @@ public abstract class Utilizador implements Serializable{
         this.morada = morada;
         this.localidade = localidade;
     }
-    
-    /**
-     * @return the idUtilizador
-     */
+
     public int getIdUtilizador() {
         return idUtilizador;
     }
 
-    /**
-     * @param idUtilizador the idUtilizador to set
-     */
     public void setIdUtilizador(int idUtilizador) {
         this.idUtilizador = idUtilizador;
     }
 
-    /**
-     * @return the nome
-     */
     public String getNome() {
         return nome;
     }
 
-    /**
-     * @param nome the nome to set
-     */
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-    /**
-     * @return the username
-     */
+
     public String getUsername() {
         return username;
     }
 
-    /**
-     * @param nome the nome to set
-     */
     public void setUsername(String username) {
         this.username = username;
     }
 
-    /**
-     * @return the password
-     */
     public String getPassword() {
         return password;
     }
 
-    /**
-     * @param password the password to set
-     */
     public void setPassword(String password) {
         this.password = password;
     }
 
-    /**
-     * @return the numCC
-     */
     public int getNumCC() {
         return numCC;
     }
 
-    /**
-     * @param numCC the numCC to set
-     */
     public void setNumCC(int numCC) {
         this.numCC = numCC;
     }
 
-    /**
-     * @return the nif
-     */
     public int getNif() {
         return nif;
     }
 
-    /**
-     * @param nif the nif to set
-     */
     public void setNif(int nif) {
         this.nif = nif;
     }
 
-    /**
-     * @return the numTelef
-     */
     public int getNumTelef() {
         return numTelef;
     }
 
-    /**
-     * @param numTelef the numTelef to set
-     */
     public void setNumTelef(int numTelef) {
         this.numTelef = numTelef;
     }
 
-    /**
-     * @return the morada
-     */
     public String getMorada() {
         return morada;
     }
 
-    /**
-     * @param morada the morada to set
-     */
     public void setMorada(String morada) {
         this.morada = morada;
     }
 
-    /**
-     * @return the localidade
-     */
     public String getLocalidade() {
         return localidade;
     }
 
-    /**
-     * @param localidade the localidade to set
-     */
     public void setLocalidade(String localidade) {
         this.localidade = localidade;
     }

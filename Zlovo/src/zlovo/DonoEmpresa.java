@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package zlovo;
 
 import java.util.ArrayList;
@@ -25,30 +20,18 @@ public class DonoEmpresa extends Utilizador{
         this.ativo = ativo;
     }
 
-    /**
-     * @return the ativo
-     */
     public boolean isAtivo() {
         return ativo;
     }
 
-    /**
-     * @param ativo the ativo to set
-     */
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
     
-    /**
-     * @return the empresas
-     */
     public ArrayList<Empresa> getEmpresas() {
         return empresas;
     }
 
-    /**
-     * @param empresas the empresas to set
-     */
     public void setEmpresas(ArrayList<Empresa> empresas) {
         this.empresas = empresas;
     }

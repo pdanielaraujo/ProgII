@@ -11,6 +11,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 
 import javafx.fxml.FXML;
@@ -85,6 +86,11 @@ public class ConfirmarEntregaController implements Initializable {
         });
         
         encomendas_table.setItems(lista_encomendas);
+    }
+    
+    @FXML
+    void encomendaEntregue(ActionEvent event) {
+
     }
     
 }
