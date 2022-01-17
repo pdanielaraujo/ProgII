@@ -36,14 +36,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ToggleButton>
-            <ToggleButton fx:id="goToGerirProdutoScreen" mnemonicParsing="false" onAction="#loadGerirProdutoPane" prefHeight="50.0" prefWidth="200.0" styleClass="sideBarButton" text="Categorias Produto" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ToggleButton>
             <ToggleButton fx:id="goToGerirEncomendasScreen" mnemonicParsing="false" onAction="#loadGerirEncomendaPane" prefHeight="50.0" prefWidth="200.0" styleClass="sideBarButton" text="Encomendas" textFill="WHITE">
                <font>
                   <Font size="14.0" />

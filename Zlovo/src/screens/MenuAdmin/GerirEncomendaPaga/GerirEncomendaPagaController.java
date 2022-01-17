@@ -81,7 +81,7 @@ public class GerirEncomendaPagaController implements Initializable {
         
         for(Integer key : Singleton.instance.getEncomendas().keySet()) {
             Encomenda encomenda = Singleton.instance.getEncomendas().get(key);
-            if(encomenda.getEstado() == 1 || encomenda.getEstado() == 2) {
+            if(encomenda.getEstado() == 0 || encomenda.getEstado() == 1 || encomenda.getEstado() == 2 || encomenda.getEstado() == 4) {
                 lista_encomendas.add(encomenda);
             }
         }
@@ -92,10 +92,14 @@ public class GerirEncomendaPagaController implements Initializable {
         estadoEnc_col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Encomenda, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Encomenda, String> param) {
-                if(param.getValue().getEstado() == 1) {
+                if(param.getValue().getEstado() == 0) {
+                    return new SimpleObjectProperty<>("Por pagar");
+                } else if(param.getValue().getEstado() == 1) {
                     return new SimpleObjectProperty<>("Paga");
                 } else if(param.getValue().getEstado() == 2) {
                     return new SimpleObjectProperty<>("Em entrega");
+                } else if(param.getValue().getEstado() == 4){
+                    return new SimpleObjectProperty<>("Anulada");
                 }
                 return (ObservableValue<String>) param;
             }
@@ -143,10 +147,10 @@ public class GerirEncomendaPagaController implements Initializable {
         Encomenda encomenda = encomendas_table.getSelectionModel().getSelectedItem();
         Motard motard = motards_table.getSelectionModel().getSelectedItem();
         
-        if(encomenda == null) {
+        if(encomenda == null || motard == null) {
             alert.setAlertType(Alert.AlertType.WARNING);
             alert.setTitle("Erro: Sem seleção");
-            alert.setHeaderText("Tem de selecionar uma empresa.");
+            alert.setHeaderText("Tem de selecionar uma empresa e um motard.");
             alert.show();
         } else {
             encomenda.setEstado(2);

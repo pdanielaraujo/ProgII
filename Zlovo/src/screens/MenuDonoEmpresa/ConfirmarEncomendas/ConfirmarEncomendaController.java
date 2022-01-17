@@ -69,7 +69,7 @@ public class ConfirmarEncomendaController implements Initializable {
         
         for(Integer key : Singleton.instance.getEncomendas().keySet()) {
             Encomenda encomenda = Singleton.instance.getEncomendas().get(key);
-            if(encomenda.getEstado() == 0 || encomenda.getEstado() == 1) {
+            if(encomenda.getEstado() == 0 || encomenda.getEstado() == 1 || encomenda.getEstado() == 2) {
                 lista_encomendas.add(encomenda);
             }
         }
@@ -84,8 +84,8 @@ public class ConfirmarEncomendaController implements Initializable {
                     return new SimpleObjectProperty<>("Por pagar");
                 } else if(param.getValue().getEstado() == 1) {
                     return new SimpleObjectProperty<>("Paga");
-                } else if(param.getValue().getEstado() == 4){
-                    return new SimpleObjectProperty<>("Anulada");
+                } else if(param.getValue().getEstado() == 2) {
+                    return new SimpleObjectProperty<>("Em entrega");
                 }
                 return (ObservableValue<String>) param;
             }
@@ -103,7 +103,7 @@ public class ConfirmarEncomendaController implements Initializable {
         if(encomenda == null) {
             alert.setAlertType(Alert.AlertType.WARNING);
             alert.setTitle("Erro: Sem seleção");
-            alert.setHeaderText("Tem de selecionar uma empresa.");
+            alert.setHeaderText("Tem de selecionar uma encomenda.");
             alert.show();
         } else {
             encomenda.setEstado(4);
@@ -120,7 +120,7 @@ public class ConfirmarEncomendaController implements Initializable {
         if(encomenda == null) {
             alert.setAlertType(Alert.AlertType.WARNING);
             alert.setTitle("Erro: Sem seleção");
-            alert.setHeaderText("Tem de selecionar uma empresa.");
+            alert.setHeaderText("Tem de selecionar uma encomenda.");
             alert.show();
         } else {
             encomenda.setEstado(1);
