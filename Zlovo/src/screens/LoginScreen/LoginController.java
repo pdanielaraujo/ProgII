@@ -124,10 +124,11 @@ public class LoginController implements Initializable {
                     
                 } else if(utilizador instanceof Motard) {
                     System.out.println("É um motard");
+                    Motard motard = (Motard) utilizador;
                     try{
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/screens/MenuMotard/MenuMotard.fxml"));
                         
-                        stage.setUserData(utilizador);
+                        stage.setUserData(motard);
                         Parent root = loader.load();
                         stage.getScene().setRoot(root);
                         stage.show();

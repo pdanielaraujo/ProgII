@@ -1,14 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="screens.MenuMotard.MenuMotardController">
-    <stylesheets>
-        <URL value="@menumotard.css" />
-    </stylesheets>
+<AnchorPane prefHeight="695.0" prefWidth="1295.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screens.MenuMotard.MenuMotardController">
+   <stylesheets>
+      <URL value="@../MenuAdmin/menuadmin.css" />
+   </stylesheets>
    <children>
-      <Label layoutX="256.0" layoutY="182.0" text="MENU MOTARD" />
+      <AnchorPane fx:id="rootPane" focusTraversable="true" layoutX="200.0" layoutY="50.0" prefHeight="645.0" prefWidth="1095.0" styleClass="mainContainer" stylesheets="@../MenuAdmin/menuadmin.css" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </AnchorPane>
+      <VBox prefHeight="645.0" prefWidth="200.0" styleClass="sideBarContainer" stylesheets="@../MenuAdmin/menuadmin.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <ToggleButton fx:id="goToConfirmarEntregaScreen" mnemonicParsing="false" onAction="#loadConfirmarEntregaPane" prefHeight="50.0" prefWidth="200.0" styleClass="sideBarButton" text="Confirmar Entrega" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ToggleButton>
+         </children>
+      </VBox>
+      <AnchorPane prefHeight="50.0" prefWidth="1295.0" style="-fx-background-color: #4d677d;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="578.0" layoutY="12.0" style="-fx-font-weight: bold;" text="MENU MOTARD" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="terminarSessao_btn" layoutX="1140.0" layoutY="10.0" mnemonicParsing="false" onAction="#terminarSessao" styleClass="sairButton" text="Terminar sessão" textFill="#728da6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ToggleButton fx:id="goHome_btn" mnemonicParsing="false" onAction="#loadMainMotardPage" styleClass="homeButton" text="Zlovo" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </ToggleButton>
+         </children>
+      </AnchorPane>
+      <Label layoutX="897.0" layoutY="15.0" text="Sessão iniciada em: " textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="loggedUserName_label" layoutX="1020.0" layoutY="15.0" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

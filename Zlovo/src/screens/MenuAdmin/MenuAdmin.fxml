@@ -79,5 +79,15 @@
             </ToggleButton>
          </children>
       </AnchorPane>
+      <Label layoutX="897.0" layoutY="15.0" text="Sessão iniciada em: " textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="loggedUserName_label" layoutX="1020.0" layoutY="15.0" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

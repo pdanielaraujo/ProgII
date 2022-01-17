@@ -74,7 +74,7 @@ public class Zlovo extends Application{
         }
         
         for(Encomenda enc : Singleton.instance.getEncomendas().values()) {
-            System.out.println("encsestado: " + enc.getEstado());
+            System.out.println("encsestado: " + enc.getProdutos());
         }
         System.out.println("produtoooos: " + Singleton.instance.getProdutos());
         System.out.println("encomendasss: " + Singleton.instance.getEncomendas());
@@ -93,11 +93,5 @@ public class Zlovo extends Application{
         primaryStage.setMaximized(true);
         primaryStage.setResizable(true);
         primaryStage.show();
-        
-        
-//        System.out.println(primaryStage.getWidth());
-//        System.out.println(primaryStage.getHeight());
-//        System.out.println(primaryStage.getMaxWidth());
-//        System.out.println(primaryStage.getMaxHeight());
     }
 }

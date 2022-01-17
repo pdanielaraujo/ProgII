@@ -102,7 +102,9 @@ public class AddEncomendaController implements Initializable {
     ArrayList<Produto> produtosEncomenda = new ArrayList<>();
     float precoTotal = 0;
     ArrayList<Float> preco = new ArrayList<>();
-
+    ArrayList<Pane> panes = new ArrayList<>();
+    Pane pa = new Pane();
+    
     /**
      * Initializes the controller class.
      */
@@ -147,135 +149,102 @@ public class AddEncomendaController implements Initializable {
     
     void atualizarTabelaPrecos() {
         Alert alert = new Alert(Alert.AlertType.NONE);
-//        ObservableList<Produto> lista_precos = FXCollections.observableArrayList();
         
         Produto produto = produtos_table.getSelectionModel().getSelectedItem();
         System.out.println("produtos" + produto.getPreco());
         
         descricaoPreco_col.setCellValueFactory((TableColumn.CellDataFeatures<Map.Entry<String, Float>, String> param) -> new SimpleObjectProperty(param.getValue().getKey()));
         preco_col.setCellValueFactory((TableColumn.CellDataFeatures<Map.Entry<String, Float>, Float> param) -> new SimpleObjectProperty(param.getValue().getValue() + "€"));
-//        addBtn_col.setCellValueFactory((TableColumn.CellDataFeatures<Map.Entry<String, Float>, Button> param) -> new SimpleObjectProperty(new Button("add")));
         precos_table.getItems().setAll(produto.getPreco().entrySet());
-//        addBtn_col.setCellFactory((param) -> new TableCell<Map.Entry<String, Float>, Produto>(){
-//            
-//            private final Button btn = new Button("Adicionar");
-//            int qtd = 0;
-//            float precoTotal = 0;
-//            Encomenda encomenda = new Encomenda();
-//            private final ArrayList<Produto> produtosEncomenda = new ArrayList<>();
-////            ArrayList<Produto> produtosEncomenda = new ArrayList<>();
-////            ArrayList<Produto> encomendaObj = new ArrayList<>();
-////            Produto prod = new Produto(produto.getNome(), produto.getCategoria(), produto.getCategoria(), produto.getPreco());
-//            {
-//                
-//                btn.setOnAction((ActionEvent event) -> {
-//                    {
-//                        
-//                        produtosEncomenda.add(produto);
-//                        System.out.println("xx: " + produtosEncomenda);
-//                       
-//                    }
-//                    Map.Entry<String, Float> entry = getTableView().getItems().get(getIndex());
-//                });
-//            }
-//            
-//            
-//            @Override
-//            protected void updateItem(Produto p, boolean empty) {
-//                super.updateItem(p, empty);
-//                setGraphic(empty ? null : btn);
-//            }
-//        });
 
-          addBtn_col.setCellFactory(new Callback<TableColumn<Map.Entry<String, Float>, Produto>, TableCell<Map.Entry<String, Float>, Produto>>() {
-            @Override
-            public TableCell<Map.Entry<String, Float>, Produto> call(TableColumn<Map.Entry<String, Float>, Produto> param) {
-                final TableCell<Map.Entry<String, Float>, Produto> cell = new TableCell<Map.Entry<String, Float>, Produto>() {
-                    private Button btn = new Button("Carrinho");
-                    ArrayList<Pane> panes = new ArrayList<>();
-                    Pane pane = new Pane();
-                    int lengthId= 0;
-                    
-                    {
-                        
-                        btn.setMaxWidth(Double.MAX_VALUE);
-                        btn.setMaxHeight(Double.MIN_VALUE);
-                        btn.setStyle("-fx-background-color: #7fa6c9; -fx-text-fill: white; -fx-cursor: hand;");
-                        
-                        btn.setOnAction((ActionEvent event) -> {
-                            Map.Entry<String, Float> entry = getTableView().getItems().get(getIndex());
-                            encomenda.getProdutos().add(produto);
-                            preco.add(entry.getValue());
-                            precoTotal += entry.getValue();
-                            encomenda.setPrecoTotal(precoTotal);
-                            encomenda.setDescricao(entry.getKey());
-                            encomenda.setEstado(0);
-                            encomenda.setEmpresa(produto.getEmpresa());
-                            
-                            String paneId = "id0" + Integer.toString(lengthId++);
-                            
-                            Label prodNome = new Label();
-                            prodNome.setText(produto.getNome());
-                            prodNome.setLayoutX(10);
-                            prodNome.setLayoutY(10);
-                            
-                            Label prodDesc = new Label();
-                            prodDesc.setText(entry.getKey());
-                            prodDesc.setLayoutX(10);
-                            prodDesc.setLayoutY(35);
-                            
-                            Label prodPreco = new Label();
-                            prodPreco.setText(String.valueOf(entry.getValue()) + "€");
-                            prodPreco.setLayoutX(145);
-                            prodPreco.setLayoutY(35);
-                            
-                            ImageView deleteBtn = new ImageView("./assets/delete_icon.png");
-                            deleteBtn.setLayoutX(190);
-                            deleteBtn.setLayoutY(30);
-                            deleteBtn.setCursor(Cursor.HAND);
-                            
-                            Pane pan = new Pane();
-                            
-                            for(int i = 0; i < 9; i++) {
-                                Pane pa = new Pane();
-                                pa.setStyle("-fx-background-color: white; -fx-border-width: 0 0 1 0; -fx-border-color: #728da6; -fx-padding: 5;");
-                                pa.getChildren().addAll(prodNome, prodDesc, prodPreco, deleteBtn);
-                                pan = pa;
-                                panes.add(pan);
-                            }
-                            
-                            containerCarrinho.getChildren().add(pan);
-                            scrollEncomenda.setHbarPolicy(ScrollBarPolicy.NEVER);
-                            scrollEncomenda.setVbarPolicy(ScrollBarPolicy.ALWAYS);
-                            scrollEncomenda.setContent(containerCarrinho);
-                            
-//                            deleteBtn.setOnMouseClicked((MouseEvent eventA) -> {
-//                                boolean remove = false;
-//                                for(Produto prod : encomenda.getProdutos()) {
-//                                    for(Pane pane_ : panes) {
-//                                        if(prod.getDescricao().equals(pane_.getChildren().get(lengthId)))
-//                                    }
-//                                }
-////                                if(remove) {
-////                                    containerCarrinho.getChildren().remove(pan);
-////                                }
-////                              encomenda.getProdutos().remove(produto);
-//                                System.out.println("CONA");
-//                                
-//                            });
-                            
-                            valorTotal_txt.setText(String.valueOf(precoTotal) + "€");
-                        });
-                    }
-                    
-                    @Override
-                    protected void updateItem(Produto p, boolean empty) {
-                        super.updateItem(p, empty);
-                        setGraphic(empty ? null : btn);
-                    }
-                };
-                return cell;
-            }
+        addBtn_col.setCellFactory(new Callback<TableColumn<Map.Entry<String, Float>, Produto>, TableCell<Map.Entry<String, Float>, Produto>>() {
+          @Override
+          public TableCell<Map.Entry<String, Float>, Produto> call(TableColumn<Map.Entry<String, Float>, Produto> param) {
+              final TableCell<Map.Entry<String, Float>, Produto> cell = new TableCell<Map.Entry<String, Float>, Produto>() {
+                  private Button btn = new Button("Carrinho");
+                  
+                  Pane pane = new Pane();
+                  int lengthId= 0;
+                  
+                  {
+                      
+                      btn.setMaxWidth(Double.MAX_VALUE);
+                      btn.setMaxHeight(Double.MIN_VALUE);
+                      btn.setStyle("-fx-background-color: #7fa6c9; -fx-text-fill: white; -fx-cursor: hand;");
+                      
+                      btn.setOnAction((ActionEvent event) -> {
+                          Map.Entry<String, Float> entry = getTableView().getItems().get(getIndex());
+                          produtosEncomenda.add(produto);
+                          encomenda.setProdutos(produtosEncomenda);
+                          preco.add(entry.getValue());
+                          precoTotal += entry.getValue();
+                          encomenda.setPrecoTotal(precoTotal);
+                          encomenda.setDescricao(entry.getKey());
+                          encomenda.setEstado(0);
+                          encomenda.setEmpresa(produto.getEmpresa());
+                          
+                          String paneId = "id0" + Integer.toString(lengthId++);
+                          
+  
+  
+                          Label prodNome = new Label();
+                          prodNome.setText(produto.getNome());
+                          prodNome.setLayoutX(10);
+                          prodNome.setLayoutY(10);
+                          
+                          Label prodDesc = new Label();
+                          prodDesc.setText(entry.getKey());
+                          prodDesc.setLayoutX(10);
+                          prodDesc.setLayoutY(35);
+                          
+                          Label prodPreco = new Label();
+                          prodPreco.setText(String.valueOf(entry.getValue()) + "€");
+                          prodPreco.setLayoutX(145);
+                          prodPreco.setLayoutY(35);
+                          
+                          ImageView deleteBtn = new ImageView("./assets/delete_icon.png");
+                          deleteBtn.setLayoutX(190);
+                          deleteBtn.setLayoutY(30);
+                          deleteBtn.setCursor(Cursor.HAND);
+                          
+                          Pane pan = new Pane();
+                          pan.setStyle("-fx-background-color: white; -fx-border-width: 0 0 1 0; -fx-border-color: #728da6; -fx-padding: 5;");
+                          pan.getChildren().addAll(prodNome, prodDesc, prodPreco, deleteBtn);
+                          pa = pan;
+                          panes.add(pa);
+                          
+                          containerCarrinho.getChildren().add(pan);
+                          scrollEncomenda.setHbarPolicy(ScrollBarPolicy.NEVER);
+                          scrollEncomenda.setVbarPolicy(ScrollBarPolicy.ALWAYS);
+                          scrollEncomenda.setContent(containerCarrinho);
+                          
+//                          deleteBtn.setOnMouseClicked((MouseEvent eventA) -> {
+//                              boolean remove = false;
+//                              for(Produto prod : encomenda.getProdutos()) {
+//                                  for(Pane pane_ : panes) {
+//                                      if(prod.getDescricao().equals(pane_.getChildren().get(lengthId)))
+//                                  }
+//                              }
+////                              if(remove) {
+////                                  containerCarrinho.getChildren().remove(pan);
+////                              }
+////                            encomenda.getProdutos().remove(produto);
+//                              System.out.println("AAA");
+//                              
+//                          });
+                          
+                          valorTotal_txt.setText(String.valueOf(precoTotal) + "€");
+                      });
+                  }
+                  
+                  @Override
+                  protected void updateItem(Produto p, boolean empty) {
+                      super.updateItem(p, empty);
+                      setGraphic(empty ? null : btn);
+                  }
+              };
+              return cell;
+          }
         });
     }
     
@@ -297,28 +266,28 @@ public class AddEncomendaController implements Initializable {
     void goToPayment(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.NONE);
         encomenda.setIdEncomenda(Singleton.instance.incrementIdEncomenda(encomenda));
+        
         for(Empresa emp : Singleton.instance.getEmpresas().values()) {
             if(encomenda.getEmpresa().equals(emp)) {
                 ArrayList<Encomenda> encomendas = new ArrayList<>();
                 encomendas.add(encomenda);
-                emp.getEncomendas().addAll(encomendas);
+                emp.setEncomendas(encomendas);
                 Singleton.instance.adicionarEmpresas(emp);
                 Singleton.instance.adicionarEncomendas(encomenda);
-                System.out.println("enc5: " + encomenda);
+                alert.setAlertType(Alert.AlertType.INFORMATION);
+                alert.setTitle("Info: Encomenda registada");
+                alert.setHeaderText("A sua encomenda foi registada com sucesso.");
+                alert.show();
+        
+                containerCarrinho.getChildren().removeAll(panes);
+                precoTotal = 0;
+                valorTotal_txt.setText(null);
+                encomenda.getProdutos().removeAll(produtosEncomenda);
             }
         }
         
-        System.out.println("desc prod: " + encomenda.getDescricao());
-        System.out.println("enc emp: " + encomenda.getEmpresa());
-        System.out.println("total: " + encomenda.getPrecoTotal());
-        System.out.println("prods: " + encomenda.getProdutos());
         
-        alert.setAlertType(Alert.AlertType.INFORMATION);
-        alert.setTitle("Info: Encomenda registada");
-        alert.setHeaderText("A sua encomenda foi registada com sucesso.");
-        alert.show();
-        System.out.println("encomenda valor: " + encomenda.getPrecoTotal());
-        containerCarrinho.getChildren().clear();
+        
     }
     
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package screens.MenuDonoEmpresa.ConfirmarEncomendas;
+package screens.MenuMotard.ConfirmarEntrega;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,28 +11,24 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
+
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
-import zlovo.DonoEmpresa;
 import zlovo.Empresa;
 import zlovo.Encomenda;
-import zlovo.Motard;
 import zlovo.Singleton;
-import zlovo.Utilizador;
 
 /**
  * FXML Controller class
  *
  * @author Pedro
  */
-public class ConfirmarEncomendaController implements Initializable {
+public class ConfirmarEntregaController implements Initializable {
     
     @FXML
     private TableView<Encomenda> encomendas_table;
@@ -50,26 +46,22 @@ public class ConfirmarEncomendaController implements Initializable {
     private TableColumn<Encomenda, String> estadoEnc_col;
 
     @FXML
-    private Button confirmarEnc_btn;
-
-    @FXML
-    private Button anularEnc_btn;
-
+    private Button encEntregue_btn;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        atualizarTabelaEncomendas();
-    }
+        // TODO
+    }    
     
     void atualizarTabelaEncomendas() {
         ObservableList<Encomenda> lista_encomendas = FXCollections.observableArrayList();
         
         for(Integer key : Singleton.instance.getEncomendas().keySet()) {
             Encomenda encomenda = Singleton.instance.getEncomendas().get(key);
-            if(encomenda.getEstado() == 0 || encomenda.getEstado() == 1) {
+            if(encomenda.getEstado() == 1) {
                 lista_encomendas.add(encomenda);
             }
         }
@@ -93,40 +85,6 @@ public class ConfirmarEncomendaController implements Initializable {
         });
         
         encomendas_table.setItems(lista_encomendas);
-    }
-    
-    @FXML
-    void anularEncomenda(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.NONE);
-        Encomenda encomenda = encomendas_table.getSelectionModel().getSelectedItem();
-        
-        if(encomenda == null) {
-            alert.setAlertType(Alert.AlertType.WARNING);
-            alert.setTitle("Erro: Sem seleção");
-            alert.setHeaderText("Tem de selecionar uma empresa.");
-            alert.show();
-        } else {
-            encomenda.setEstado(4);
-            Singleton.instance.adicionarEncomendas(encomenda);
-            atualizarTabelaEncomendas();
-        }
-    }
-
-    @FXML
-    void confirmarEncomenda(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.NONE);
-        Encomenda encomenda = encomendas_table.getSelectionModel().getSelectedItem();
-        
-        if(encomenda == null) {
-            alert.setAlertType(Alert.AlertType.WARNING);
-            alert.setTitle("Erro: Sem seleção");
-            alert.setHeaderText("Tem de selecionar uma empresa.");
-            alert.show();
-        } else {
-            encomenda.setEstado(1);
-            Singleton.instance.adicionarEncomendas(encomenda);
-            atualizarTabelaEncomendas();
-        }
     }
     
 }

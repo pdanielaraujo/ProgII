@@ -11,9 +11,12 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -60,6 +63,9 @@ public class GerirEncomendaPagaController implements Initializable {
 
     @FXML
     private TableColumn<Motard, String> localidadeMotard_col;
+    
+    @FXML
+    private Button atribuir_btn;
 
     /**
      * Initializes the controller class.
@@ -97,12 +103,11 @@ public class GerirEncomendaPagaController implements Initializable {
         motardEnc_col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Encomenda, Motard>, ObservableValue<Motard>>() {
             @Override
             public ObservableValue<Motard> call(TableColumn.CellDataFeatures<Encomenda, Motard> param) {
-                if(param.getValue().getEstado() == 1) {
+                if(param.getValue().getMotard()== null) {
                     return new SimpleObjectProperty<>();
-                } else if(param.getValue().getEstado() == 2) {
+                } else {
                     return new SimpleObjectProperty<>(param.getValue().getMotard());
                 }
-                return (ObservableValue<Motard>) param;
             }
         });
         
@@ -130,6 +135,29 @@ public class GerirEncomendaPagaController implements Initializable {
         numTelef_col.setCellValueFactory(new PropertyValueFactory<>("numTelef"));
         
         motards_table.setItems(lista_motards);
+    }
+    
+    @FXML
+    void atribuirMotard(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        Encomenda encomenda = encomendas_table.getSelectionModel().getSelectedItem();
+        Motard motard = motards_table.getSelectionModel().getSelectedItem();
+        
+        if(encomenda == null) {
+            alert.setAlertType(Alert.AlertType.WARNING);
+            alert.setTitle("Erro: Sem seleção");
+            alert.setHeaderText("Tem de selecionar uma empresa.");
+            alert.show();
+        } else {
+            encomenda.setEstado(2);
+            encomenda.setMotard(motard);
+            motard.setEmServico(true);
+            Singleton.instance.adicionarEncomendas(encomenda);
+            atualizarTabelaEncomendas();
+            atualizarTabelaMotards();
+            System.out.println("aa: " + encomenda.getMotard());
+        }
+
     }
     
 }
