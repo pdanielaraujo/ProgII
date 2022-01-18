@@ -203,7 +203,9 @@ public class GerirProdutosController implements Initializable {
         ObservableList<Produto> lista_produtos = FXCollections.observableArrayList();
         
         for(Produto p : Singleton.instance.getProdutos().values()) {
-            lista_produtos.add(p);
+            if(p.getEmpresa().getDono().equals(donoemp)) {
+                lista_produtos.add(p);
+            }
         }
         
         nomeProduto_col.setCellValueFactory(new PropertyValueFactory<>("nome"));
