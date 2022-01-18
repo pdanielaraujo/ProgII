@@ -28,6 +28,8 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import zlovo.DonoEmpresa;
 import zlovo.Empresa;
 import zlovo.Produto;
 import zlovo.Singleton;
@@ -38,6 +40,8 @@ import zlovo.Singleton;
  * @author Pedro
  */
 public class GerirProdutosController implements Initializable {
+    
+    Stage stage = zlovo.Zlovo.guiStage;
     
     @FXML
     private TableView<Produto> produtos_table;
@@ -137,6 +141,8 @@ public class GerirProdutosController implements Initializable {
     
     @FXML
     private ChoiceBox<Empresa> choicebox_empresasUpdate;
+    
+    private DonoEmpresa donoemp = (DonoEmpresa) stage.getUserData();
 
     /**
      * Initializes the controller class.
@@ -185,7 +191,9 @@ public class GerirProdutosController implements Initializable {
         for(Integer key : Singleton.instance.getEmpresas().keySet()) {
             Empresa empresa = Singleton.instance.getEmpresas().get(key);
             if(empresa.isAtivo()) {
-                lista_empresas.add(empresa);
+                if(empresa.getDono().equals(donoemp)) {
+                    lista_empresas.add(empresa);
+                }
             }
         }
         choicebox_empresas.setItems(lista_empresas);
