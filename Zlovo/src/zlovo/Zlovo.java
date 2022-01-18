@@ -56,7 +56,10 @@ public class Zlovo extends Application{
         }
         
         for(Encomenda enc : Singleton.instance.getEncomendas().values()) {
-            System.out.println("encsestado: " + enc.getProdutos());
+            System.out.println("emp1: " + enc);
+            for(Produto prod : enc.getProdutos()) {
+                System.out.println("prod/emp: " + prod);
+            }
         }
         System.out.println("produtoooos: " + Singleton.instance.getProdutos());
         System.out.println("encomendasss: " + Singleton.instance.getEncomendas());

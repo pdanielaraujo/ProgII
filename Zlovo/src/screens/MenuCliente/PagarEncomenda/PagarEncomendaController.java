@@ -68,6 +68,7 @@ public class PagarEncomendaController implements Initializable {
         for(Integer key : Singleton.instance.getEncomendas().keySet()) {
             Encomenda encomenda = Singleton.instance.getEncomendas().get(key);
             if(encomenda.getEstado() == 0 || encomenda.getEstado() == 1 || encomenda.getEstado() == 2) {
+                System.out.println("enc: " + encomenda.getIdEncomenda());
                 lista_encomendas.add(encomenda);
             }
         }
@@ -107,8 +108,20 @@ public class PagarEncomendaController implements Initializable {
             alert.setHeaderText("Tem de selecionar uma encomenda.");
             alert.show();
         } else {
-            entidade_txt.setText(String.valueOf(encomenda.getEmpresa().getEntidade()));
+            if(encomenda.getEstado() == 1) {
+                alert.setAlertType(Alert.AlertType.WARNING);
+                alert.setTitle("Erro: Já confirmada");
+                alert.setHeaderText("Esta encomenda já se encontra paga.");
+                alert.show();
+            } else if(encomenda.getEstado() == 2) {
+                alert.setAlertType(Alert.AlertType.WARNING);
+                alert.setTitle("Erro: Erro: Já em entrega");
+                alert.setHeaderText("Esta encomenda já se encontra em entrega.");
+                alert.show();
+            } else if(encomenda.getEstado() == 0) {
+                entidade_txt.setText(String.valueOf(encomenda.getEmpresa().getEntidade()));
             referencia_txt.setText(String.valueOf(referencia));
+            }
         }
     }
 }

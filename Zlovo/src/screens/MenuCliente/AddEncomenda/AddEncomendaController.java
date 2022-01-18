@@ -174,14 +174,17 @@ public class AddEncomendaController implements Initializable {
                       
                       btn.setOnAction((ActionEvent event) -> {
                           Map.Entry<String, Float> entry = getTableView().getItems().get(getIndex());
+                          
                           produtosEncomenda.add(produto);
-                          encomenda.setProdutos(produtosEncomenda);
+                          Encomenda e = new Encomenda();
+                          e.setProdutos(produtosEncomenda);
                           preco.add(entry.getValue());
                           precoTotal += entry.getValue();
-                          encomenda.setPrecoTotal(precoTotal);
-                          encomenda.setDescricao(entry.getKey());
-                          encomenda.setEstado(0);
-                          encomenda.setEmpresa(produto.getEmpresa());
+                          e.setPrecoTotal(precoTotal);
+                          e.setDescricao(entry.getKey());
+                          e.setEstado(0);
+                          e.setEmpresa(produto.getEmpresa());
+                          encomenda = e;
                           
                           String paneId = "id0" + Integer.toString(lengthId++);
                           
@@ -265,8 +268,10 @@ public class AddEncomendaController implements Initializable {
     @FXML
     void goToPayment(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.NONE);
-        encomenda.setIdEncomenda(Singleton.instance.incrementIdEncomenda(encomenda));
         
+        encomenda.setIdEncomenda(Singleton.instance.incrementIdEncomenda(encomenda));
+        System.out.println("aa: " + encomenda.getIdEncomenda());
+        System.out.println("bb: " + encomenda);
         for(Empresa emp : Singleton.instance.getEmpresas().values()) {
             if(encomenda.getEmpresa().equals(emp)) {
                 ArrayList<Encomenda> encomendas = new ArrayList<>();
@@ -283,11 +288,9 @@ public class AddEncomendaController implements Initializable {
                 precoTotal = 0;
                 valorTotal_txt.setText(null);
                 encomenda.getProdutos().removeAll(produtosEncomenda);
+                
             }
         }
-        
-        
-        
     }
     
 }

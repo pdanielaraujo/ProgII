@@ -73,7 +73,10 @@
                   </AnchorPane>
               </content>
             </ScrollPane>
-            <Button fx:id="irPagar_btn" layoutX="26.0" layoutY="461.0" mnemonicParsing="false" onAction="#goToPayment" prefWidth="100.0" styleClass="addButton" stylesheets="@../../MenuDonoEmpresa/AddEmpresa/addempresa.css" text="Pagar" textFill="WHITE" />
+            <Button fx:id="irPagar_btn" layoutX="26.0" layoutY="461.0" mnemonicParsing="false" onAction="#goToPayment" prefWidth="100.0" styleClass="addButton" stylesheets="@../../MenuDonoEmpresa/AddEmpresa/addempresa.css" text="Pagar" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
       </Pane>
       <Pane layoutX="470.0" layoutY="395.0" prefHeight="64.0" prefWidth="200.0" style="-fx-background-color: red;" visible="false">

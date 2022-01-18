@@ -123,9 +123,21 @@ public class ConfirmarEncomendaController implements Initializable {
             alert.setHeaderText("Tem de selecionar uma encomenda.");
             alert.show();
         } else {
-            encomenda.setEstado(1);
-            Singleton.instance.adicionarEncomendas(encomenda);
-            atualizarTabelaEncomendas();
+            if(encomenda.getEstado() == 1) {
+                alert.setAlertType(Alert.AlertType.WARNING);
+                alert.setTitle("Erro: Já confirmada");
+                alert.setHeaderText("Esta encomenda já se encontra paga.");
+                alert.show();
+            } else if(encomenda.getEstado() == 2) {
+                alert.setAlertType(Alert.AlertType.WARNING);
+                alert.setTitle("Erro: Erro: Já em entrega");
+                alert.setHeaderText("Esta encomenda já se encontra em entrega.");
+                alert.show();
+            } else if(encomenda.getEstado() == 0) {
+                encomenda.setEstado(1);
+                Singleton.instance.adicionarEncomendas(encomenda);
+                atualizarTabelaEncomendas();
+            }
         }
     }
     

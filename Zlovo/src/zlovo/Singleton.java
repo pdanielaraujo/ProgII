@@ -170,7 +170,7 @@ public class Singleton implements Serializable {
      */
     public void adicionarEmpresas(Empresa empresa) {
         
-        instance.empresas.put(empresa.getIdEmpresa(), empresa);
+        instance.empresas.putIfAbsent(empresa.getIdEmpresa(), empresa);
         Singleton.guardarDados();
     }
     
@@ -179,7 +179,7 @@ public class Singleton implements Serializable {
      */
     public void adicionarProdutos(Produto produto) {
         
-        instance.produtos.put(produto.getIdProduto(), produto);
+        instance.produtos.putIfAbsent(produto.getIdProduto(), produto);
         Singleton.guardarDados();
     }
     
@@ -188,7 +188,7 @@ public class Singleton implements Serializable {
      */
     public void adicionarEncomendas(Encomenda encomenda) {
         
-        instance.encomendas.put(encomenda.getIdEncomenda(), encomenda);
+        instance.encomendas.putIfAbsent(encomenda.getIdEncomenda(), encomenda);
         Singleton.guardarDados();
     }
 

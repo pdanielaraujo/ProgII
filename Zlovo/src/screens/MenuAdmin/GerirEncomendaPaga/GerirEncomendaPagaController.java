@@ -153,15 +153,30 @@ public class GerirEncomendaPagaController implements Initializable {
             alert.setHeaderText("Tem de selecionar uma empresa e um motard.");
             alert.show();
         } else {
-            encomenda.setEstado(2);
-            encomenda.setMotard(motard);
-            motard.setEmServico(true);
-            Singleton.instance.adicionarEncomendas(encomenda);
-            atualizarTabelaEncomendas();
-            atualizarTabelaMotards();
-            System.out.println("aa: " + encomenda.getMotard());
+            if(encomenda.getEstado() == 1) {
+                encomenda.setEstado(2);
+                encomenda.setMotard(motard);
+                motard.setEmServico(true);
+                Singleton.instance.adicionarEncomendas(encomenda);
+                atualizarTabelaEncomendas();
+                atualizarTabelaMotards();
+            } else if(encomenda.getEstado() == 0) {
+                alert.setAlertType(Alert.AlertType.WARNING);
+                alert.setTitle("Erro: Sem pagamento");
+                alert.setHeaderText("Esta encomenda ainda não foi paga.");
+                alert.show();
+            } else if(encomenda.getEstado() == 2) {
+                alert.setAlertType(Alert.AlertType.WARNING);
+                alert.setTitle("Erro: Em entrega");
+                alert.setHeaderText("Esta encomenda já se encontra em entrega.");
+                alert.show();
+            } else if(encomenda.getEstado() == 4) {
+                alert.setAlertType(Alert.AlertType.WARNING);
+                alert.setTitle("Erro: Encomenda anulada");
+                alert.setHeaderText("Esta encomenda está anulada.");
+                alert.show();
+            }
         }
-
     }
     
 }
