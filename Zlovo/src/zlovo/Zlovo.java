@@ -52,7 +52,7 @@ public class Zlovo extends Application{
         System.out.println("antes: " + Singleton.instance.getEmpresasLocalidade());
         System.out.println("empresaaaas: " + Singleton.instance.getEmpresas());
         for(Empresa emp : Singleton.instance.getEmpresas().values()) {
-            System.out.println("empresaaaas/encomendas: " + emp.getEncomendas());
+            System.out.println("nome emo: " + emp.getNome()+ " : " + emp.getProdutos());
         }
         
         for(Encomenda enc : Singleton.instance.getEncomendas().values()) {

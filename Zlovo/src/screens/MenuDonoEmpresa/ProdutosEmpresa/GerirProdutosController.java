@@ -276,23 +276,25 @@ public class GerirProdutosController implements Initializable {
                     System.out.println("empresa não igual: " + emp);
                 }
             }
-            if(Singleton.instance.getProdutos().isEmpty()) {
-                Singleton.instance.adicionarProdutos(produto);
-                System.out.println("produto: " + produto);
-                alert.setAlertType(Alert.AlertType.INFORMATION);
-                alert.setTitle("Info: Empresa criada");
-                alert.setHeaderText("A sua empresa foi criada com sucesso.");
-                atualizarTabelaProdutos();
-                alert.show();
-            } else {
-                Singleton.instance.adicionarProdutos(produto);
-                System.out.println("produto: " + produto);
-                alert.setAlertType(Alert.AlertType.INFORMATION);
-                alert.setTitle("Info: Empresa criada");
-                alert.setHeaderText("A sua empresa foi criada com sucesso.");
-                alert.show();
-                atualizarTabelaProdutos();
-            }
+            
+            Singleton.instance.adicionarProdutos(produto);
+            System.out.println("produto: " + produto);
+            alert.setAlertType(Alert.AlertType.INFORMATION);
+            alert.setTitle("Info: Produto criado");
+            alert.setHeaderText("Produto criado com sucesso.");
+            alert.show();
+            atualizarTabelaProdutos();
+//            if(Singleton.instance.getProdutos().isEmpty()) {
+//                Singleton.instance.adicionarProdutos(produto);
+//                System.out.println("produto: " + produto);
+//                alert.setAlertType(Alert.AlertType.INFORMATION);
+//                alert.setTitle("Info: Produto criado");
+//                alert.setHeaderText("Produto criado com sucesso.");
+//                atualizarTabelaProdutos();
+//                alert.show();
+//            } else {
+//                
+//            }
         }
     }
     
